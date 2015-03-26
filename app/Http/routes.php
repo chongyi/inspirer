@@ -21,3 +21,12 @@
 // ]);
 
 Route::get('/', 'IndexController@index');
+
+Route::get('admin/login', 'Admin\MainController@login');
+Route::post('admin/login', 'Admin\MainController@loginProgress');
+Route::get('admin/logout', 'Admin\MainController@logout');
+
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
+    Route::get('/', 'MainController@index');
+    Route::resource('article', 'ArticleController');
+});
