@@ -1,4 +1,8 @@
 @extends('admin.base')
+@section('header')
+<script type="text/javascript" src="/static/js/dialog-plus-min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/ui-dialog.css">
+@stop
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -43,5 +47,26 @@
         {!! $articles->render() !!}
     </div>
 </div>
+<form id="_delete" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="_method" value="DELETE">
+</form>
+<script type="text/javascript">
+    $(document).on('click', '.op-delete', function(event) {
+        event.preventDefault();
+        var href = $(this).attr('data-target');
 
+        dialog({
+            title: '请再次确认',
+            content: '你确认要删除该项？',
+            okValue: '确定',
+            ok: function() {
+                $('#_delete').attr('action', href);
+                $('#_delete').submit();
+            },
+            cancel: function() {},
+            cancelValue: '取消'
+        }).showModal();
+    });
+</script>
 @stop

@@ -9,7 +9,7 @@
 	            <h1>{{ $article->title }}</h1>
 	        </div>
 			<div>
-				{{ $article->description }}
+				{!! \App\Inspirer\ArticleProcess::getSummary($article->content, $parse) !!}
 			</div>
 		</article>
 		@empty

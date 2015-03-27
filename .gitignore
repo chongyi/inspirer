@@ -4,3 +4,4 @@
 .env.*.php
 .env.php
 .env
+web.config
