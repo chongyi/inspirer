@@ -20,7 +20,6 @@ class CreateCategoriesTable extends Migration {
 			$table->string('display_name');
 			$table->integer('parent_id')->default(0);
 			$table->text('description');
-			$table->boolean('display_in_nav')->default(true);
 			$table->tinyInteger('sort')->default(0);
 
 		});

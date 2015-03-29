@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Parsedown;
 
-class ArticleController extends Controller {
-
-	
+class ArticleController extends Controller {	
 
 	public function __construct()
 	{
@@ -40,9 +38,9 @@ class ArticleController extends Controller {
 	 */
 	public function create()
 	{
-		$categorys = Category::getCategoryTree();
+		$categories = Category::getCategoryTree();
 
-		return view('admin.article.edit', ['categorys' => $categorys]);
+		return view('admin.article.edit', ['categories' => $categories]);
 	}
 
 	/**
@@ -97,9 +95,9 @@ class ArticleController extends Controller {
 	{
 		$article = Article::findOrFail($id);
 
-		$categorys = Category::getCategoryTree();
+		$categories = Category::getCategoryTree();
 
-		return view('admin.article.edit', ['categorys' => $categorys, 'article' => $article]);
+		return view('admin.article.edit', ['categories' => $categories, 'article' => $article]);
 	}
 
 	/**

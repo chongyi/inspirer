@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model {
 
+    protected $fillable = ['name', 'display_name', 'description', 'parent_id'];
+
     public static function getCategoryTree()
     {
         $categorys = static::orderBy('sort', 'desc')->get();

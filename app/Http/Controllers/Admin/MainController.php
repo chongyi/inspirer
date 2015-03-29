@@ -15,12 +15,7 @@ class MainController extends BaseController {
 
 	public function login()
 	{
-		$trans = ['active' => 'login'];
-
-		if (Session::has('errors')) {
-			$trans['alert'] = Session::pull('errors');
-		}
-		return view('admin.login', $trans);
+		return view('admin.login', ['active' => 'login']);
 	}
 
 	public function logout()

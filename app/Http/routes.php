@@ -29,4 +29,7 @@ Route::get('admin/logout', 'Admin\MainController@logout');
 Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'MainController@index');
     Route::resource('article', 'ArticleController');
+    Route::resource('category', 'CategoryController');
 });
+
+Route::controller('test', 'TestController');

@@ -25,35 +25,7 @@ class DefaultSeeder extends Seeder {
         Category::create([
             'name' => 'default',
             'display_name' => '默认',
-            'display_in_nav' => true,
             'description' => '默认分类',
-            ]);
-        Category::create([
-            'name' => 'default',
-            'display_name' => '默认1',
-            'display_in_nav' => true,
-            'description' => '默认分类',
-            ]);
-        Category::create([
-            'name' => 'default',
-            'display_name' => '默认2',
-            'display_in_nav' => true,
-            'description' => '默认分类',
-            'parent_id' => 2
-            ]);
-        Category::create([
-            'name' => 'default',
-            'display_name' => '默认3',
-            'display_in_nav' => true,
-            'description' => '默认分类',
-            'parent_id' => 2
-            ]);
-        Category::create([
-            'name' => 'default',
-            'display_name' => '默认4',
-            'display_in_nav' => true,
-            'description' => '默认分类',
-            'parent_id' => 4
             ]);
 
         Article::create([
@@ -63,71 +35,6 @@ class DefaultSeeder extends Seeder {
             'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
             'category_id' => 1,
             ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 1,
-            ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 2,
-            ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 1,
-            ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 3,
-            ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 3,
-            ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 4,
-            ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 1,
-            ]);
-
-        Article::create([
-            'title' => '这是一篇测试文章',
-            'keywords' => 'test,myblog,测试',
-            'description' => '这只是一篇测试文章，用测试效果',
-            'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
-            'category_id' => 1,
-            ]);
-
         // $this->call('UserTableSeeder');
     }
 

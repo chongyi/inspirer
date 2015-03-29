@@ -25,11 +25,11 @@
                             <div class="col-md-6">
                                 <label>分类</label>
                                 <select class="form-control" name="category_id">
-                                    @forelse($categorys as $category)
+                                    @forelse($categories as $category)
                                     <option value="{{ $category['id'] }}" @if(isset($article) && $article->category_id == $category['id']) selected @endif>{{ $category['display_name'] }}</option>
-                                    @if(!empty($category['subset']))
-                                    @include('admin.article.catsubset', ['space' => '&nbsp;&nbsp;&nbsp;&nbsp;', 'categorys' => $category['subset'], 'article' => isset($article) ? $article : null]);
-                                    @endif
+                                        @if(!empty($category['subset']))
+                                            @include('admin.article.catsubset', ['space' => '&nbsp;&nbsp;&nbsp;&nbsp;', 'categories' => $category['subset'], 'article' => isset($article) ? $article : null]);
+                                        @endif
                                     @empty
                                     @endforelse
                                 </select>

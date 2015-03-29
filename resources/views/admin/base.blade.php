@@ -26,7 +26,7 @@
                 <ul class="nav navbar-nav">
                     <li @if($active == 'dashboard') class="active" @endif><a href="{{ url('admin') }}">仪表盘</a></li>
                     <li @if($active == 'article') class="active" @endif><a href="{{ url('admin/article') }}">文章</a></li>
-                    <li @if($active == 'category') class="active" @endif><a href="#">分类</a></li>
+                    <li @if($active == 'category') class="active" @endif><a href="{{ url('admin/category') }}">分类</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url('admin/logout') }}">注销</a></li>
