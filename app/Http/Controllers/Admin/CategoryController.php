@@ -21,7 +21,7 @@ class CategoryController extends Controller {
 	 */
 	public function index()
 	{
-		$categories = Category::getCategoryTree();
+		$categories = Category::all();
 
 		return view('admin.category.index', ['categories' => $categories]);
 	}
@@ -33,9 +33,7 @@ class CategoryController extends Controller {
 	 */
 	public function create()
 	{
-		$categories = Category::getCategoryTree();
-
-		return view('admin.category.edit', ['categories' => $categories]);
+		return view('admin.category.edit');
 	}
 
 	/**
@@ -81,9 +79,7 @@ class CategoryController extends Controller {
 	{
 		$category = Category::findOrFail($id);
 
-		$categories = Category::getCategoryTree();
-
-		return view('admin.category.edit', ['categories' => $categories, 'cat' => $category]);
+		return view('admin.category.edit', ['category' => $category]);
 	}
 
 	/**

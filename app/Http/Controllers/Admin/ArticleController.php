@@ -38,7 +38,7 @@ class ArticleController extends Controller {
 	 */
 	public function create()
 	{
-		$categories = Category::getCategoryTree();
+		$categories = Category::all();
 
 		return view('admin.article.edit', ['categories' => $categories]);
 	}
@@ -95,7 +95,7 @@ class ArticleController extends Controller {
 	{
 		$article = Article::findOrFail($id);
 
-		$categories = Category::getCategoryTree();
+		$categories = Category::all();
 
 		return view('admin.article.edit', ['categories' => $categories, 'article' => $article]);
 	}

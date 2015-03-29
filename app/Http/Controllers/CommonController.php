@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Nav;
 
@@ -30,6 +30,7 @@ class CommonController extends Controller {
         };
 
         view()->share('navs', $function($function, $navs));
+        view()->share('categories', Category::all());
     }
 
 }

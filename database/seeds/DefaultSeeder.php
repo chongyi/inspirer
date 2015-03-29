@@ -30,7 +30,15 @@ class DefaultSeeder extends Seeder {
             ]);
 
         Article::create([
-            'title' => '欢迎使用！',
+            'title' => '这是测试',
+            'keywords' => 'myblog,welcome,我的博客,欢迎使用',
+            'description' => '这只是一个测试文章。',
+            'content' => '这只是一个测试文章。',
+            'category_id' => 1,
+            ]);
+
+        Article::create([
+            'title' => '欢迎使用',
             'keywords' => 'myblog,welcome,我的博客,欢迎使用',
             'description' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
             'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',

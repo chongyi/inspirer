@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::get('/', 'MainController@index');
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController');
+    Route::resource('nav', 'NavController');
 });
 
 Route::get('article/{id}', 'PageController@article');
+Route::get('category/{id}', 'PageController@category');

@@ -6,25 +6,9 @@ class Category extends Model {
 
     protected $fillable = ['name', 'display_name', 'description', 'parent_id'];
 
-    public static function getCategoryTree()
+    public function articles()
     {
-        $categorys = static::orderBy('sort', 'desc')->get();
-
-        return static::getSubset(0, $categorys);
-    }
-
-    public static function getSubset($parentId = 0, $data)
-    {
-        $result = [];
-
-        foreach ($data as $key => $value) {
-            if ($value['parent_id'] == $parentId) {
-                $value['subset'] = static::getSubset($value['id'], $data);
-                $result[] = $value;
-            }
-        }
-
-        return $result;
+        return $this->hasMany('App\Models\Article');
     }
 
 }
