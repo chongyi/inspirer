@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Article;
+use App\Models\Nav;
 
 class DefaultSeeder extends Seeder {
 
@@ -34,6 +35,11 @@ class DefaultSeeder extends Seeder {
             'description' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
             'content' => '欢迎使用我的博客！这是一个简单到极致的博客程序，基于laravel 5开发。',
             'category_id' => 1,
+            ]);
+
+        Nav::create([
+            'title' => '首页',
+            'link' => '/'
             ]);
         // $this->call('UserTableSeeder');
     }

@@ -25,6 +25,7 @@
                             <div class="col-md-6">
                                 <label>分类</label>
                                 <select class="form-control" name="category_id">
+                                    <option value="0" @if(isset($article) && $article->category_id == 0) selected @endif>独立页面</option>
                                     @forelse($categories as $category)
                                     <option value="{{ $category['id'] }}" @if(isset($article) && $article->category_id == $category['id']) selected @endif>{{ $category['display_name'] }}</option>
                                         @if(!empty($category['subset']))

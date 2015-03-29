@@ -10,23 +10,26 @@
   font-style: normal;
 }
 
-body { background-color: #060A0F; color: #DCE1E4; margin-top: 15px; font-family: 'agency_fbregular', 'Microsoft Yahei', sans-serif; }
-@media (min-width: 768px) {
-  #xochost-nav-control { display: none; }
-}
+body { background-color: #060A0F; color: #DCE1E4; font-family: 'agency_fbregular', 'Microsoft Yahei', sans-serif; }
 
-.xochost-brand { display: block; box-sizing: border-box; padding-bottom: 10px; position: relative; }
-.xochost-brand-img { display: block;  margin: auto; position: relative; }
+.xochost-brand { display: block; box-sizing: border-box; padding-bottom: 10px; position: absolute; z-index: 10; }
+.xochost-brand-img { display: block; position: relative; }
 
 .default-footer { margin-top: 25px; }
-.default-footer p { text-align: center; margin: 0; font-size: 90%; }
+.default-footer p { margin: 0; font-size: 90%; }
 
-.nav > li > a:hover, .nav > li > a:focus { text-decoration: none; border-bottom: solid 2px #eee; background-color: #060A0F; cursor: pointer; }
-.nav-marktab > li.active > a, 
-.nav-marktab > li.active > a:hover, 
-.nav-marktab > li.active > a:focus { 
+.nav > li > a:hover, 
+.nav > li > a:focus { text-decoration: none; border-bottom: solid 3px #80BEEC; background-color: #060A0F; cursor: pointer; margin-bottom: -3px; color: #80BEEC }
+.nav-tabs { border-bottom: solid 3px #2180C5; padding-left: 140px; margin-left: 100px; margin-top: 35px; }
+.nav-tabs > li { margin: 0; }
+.nav-tabs > li > a { border: 0; }
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus { 
 	text-decoration: none; 
-	border-bottom: solid 2px #eee; 
+  border: 0;
+	border-bottom: solid 3px #eee; 
+  margin-bottom: -3px;
 	background-color: #060A0F; 
 	cursor: pointer; 
 	color: #DCE1E4; 
@@ -37,7 +40,6 @@ body { background-color: #060A0F; color: #DCE1E4; margin-top: 15px; font-family:
   margin-bottom: 30px;
   color: inherit;
   background-color: #060A0F;
-  text-align: center;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -77,6 +79,33 @@ body { background-color: #060A0F; color: #DCE1E4; margin-top: 15px; font-family:
   color: #2180C5;
 }
 
-.default-content-brand { text-align: center; font-size: 150%; border-bottom: solid 1px #2180C5; margin-bottom: 20px; padding-bottom: 10px; }
+.default-content-brand { font-size: 150%; border-bottom: solid 1px #2180C5; margin-bottom: 20px; padding-bottom: 10px; }
 
-article { padding-bottom: 20px; }
+.article-container { position: relative; border-bottom: solid 2px #2180C5; margin-bottom: 10px; padding-bottom: 10px; }
+.article-container:last-child { border-bottom: 0; }
+.article-container > article { margin-left: 240px; border-left: solid 1px #2180C5; }
+.article-container > .article-information { position: absolute; width: 240px; text-align: right; padding-right: 40px; margin: 0; list-style: none; padding-top: 15px; }
+.article-container > .article-information > li { position: relative; line-height: 20px; }
+.article-container > .article-information > li > i { position: absolute; line-height: 16px; right: -20px; }
+
+.article-container > article > .article-title > h1 { border-bottom: solid 1px #2180C5; margin: 0; padding: 15px 15px; }
+.article-container > article > a.article-title { color: #DCE1E4; }
+.article-container > article > a:hover { text-decoration: none; color: #A7C8DD; }
+.article-container > article > .article-body { padding-left: 15px; padding-bottom: 10px; margin-right: 400px; }
+.article-container > article > .article-control { padding-left: 15px; margin-top: 20px; padding-bottom: 10px; }
+
+@media screen and (max-width: 1366px) {
+  .article-container > article > .article-body { margin-right: 150px; }
+}
+
+@media screen and (max-width: 768px) {
+  .article-container > article { margin-left: 0; border-left: 0; }
+  .article-container > .article-information { position: relative; width: 100%; text-align: left; padding: 0; }
+  .article-container > .article-information > li { position: relative; line-height: 20px; display: inline; margin-right: 10px; }
+  .article-container > .article-information > li > i { position: relative; line-height: 16px; right: auto; margin-right: 5px; }
+  .article-container > article > .article-title > h1 { padding-left: 0; }
+  .article-container > article > .article-body { padding-left: 0; margin-right: 0; }
+  .article-container > article > .article-control { padding-left: 0; }
+  .nav-tabs { border-bottom: solid 3px #2180C5; padding-left: 0; margin-top: 0; margin-left: 0; }
+  .xochost-brand { position: relative; }
+}

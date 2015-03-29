@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Validator;
+use DB;
 
 class CategoryController extends Controller {
 
@@ -45,13 +46,13 @@ class CategoryController extends Controller {
 	public function store(Request $request)
 	{
 		$check = Validator::make($request->all(), [
-			'name' => ['required', 'alpha_dash'],
+			'name' => ['required', 'enstring'],
 			'display_name' => ['required'],
 			'parent_id' => ['required', 'numeric']
 			]);
 
 		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors());
+			return redirect()->back()->withErrors($check->errors())->withInput();
 		}
 
 		Category::create($request->only('name', 'display_name', 'description', 'parent_id'));
@@ -67,7 +68,7 @@ class CategoryController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		
 	}
 
 	/**
@@ -122,7 +123,23 @@ class CategoryController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		// traverse and delete
+		DB::transaction(function() use ($id) {
+			$self = Category::findOrFail($id);
+			$this->traverseToDelete($self->id);
+			$self->delete();
+		});
+
+		return redirect()->back();
+	}
+
+	protected function traverseToDelete($parent)
+	{
+		$t = Category::where('parent_id', '=', $parent)->get();
+		foreach ($t as $category) {
+			$this->traverseToDelete($category->id);
+			$category->delete();
+		}
 	}
 
 }

@@ -20,6 +20,8 @@
 // 	'password' => 'Auth\PasswordController',
 // ]);
 
+Route::pattern('id', '[0-9]+');
+
 Route::get('/', 'IndexController@index');
 
 Route::get('admin/login', 'Admin\MainController@login');
@@ -32,4 +34,4 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('category', 'CategoryController');
 });
 
-Route::controller('test', 'TestController');
+Route::get('article/{id}', 'PageController@article');

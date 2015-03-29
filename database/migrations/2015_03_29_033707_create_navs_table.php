@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration {
+class CreateNavsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,14 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('articles', function(Blueprint $table)
+		Schema::create('navs', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps();
 			$table->string('title');
-			$table->integer('category_id');
-			$table->string('keywords');
-			$table->text('description');
-			$table->mediumText('content');
+			$table->string('link');
+			$table->integer('parent_id')->default(0);
 			$table->tinyInteger('sort')->default(0);
+			$table->timestamps();
 			$table->engine = 'innodb';
 		});
 	}
@@ -33,7 +31,7 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('articles');
+		Schema::drop('navs');
 	}
 
 }

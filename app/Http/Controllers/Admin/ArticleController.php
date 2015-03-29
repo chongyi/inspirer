@@ -145,7 +145,7 @@ class ArticleController extends Controller {
 	{
 		Article::findOrFail($id)->delete();
 
-		return redirect()->back();
+		return redirect('admin/article');
 	}
 
 }
