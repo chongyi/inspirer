@@ -46,7 +46,6 @@ class CategoryController extends Controller {
 		$check = Validator::make($request->all(), [
 			'name' => ['required', 'enstring'],
 			'display_name' => ['required'],
-			'parent_id' => ['required', 'numeric']
 			]);
 
 		if ($check->fails()) {
@@ -93,7 +92,6 @@ class CategoryController extends Controller {
 		$check = Validator::make($request->all(), [
 			'name' => ['required', 'enstring'],
 			'display_name' => ['required'],
-			'parent_id' => ['required', 'numeric']
 			]);
 
 		if ($check->fails()) {
