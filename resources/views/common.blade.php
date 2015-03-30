@@ -14,6 +14,7 @@
     <script type="text/javascript" src="/static/js/bootstrap-submenu.min.js"></script>
     <script type="text/javascript" src="/static/plugins/syntaxhighlighter/scripts/shCore.js"></script>
     <script type="text/javascript" src="/static/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.emoji.js"></script>
     <link type="text/css" rel="stylesheet" href="/static/plugins/syntaxhighlighter/styles/shCore.css">
     <link type="text/css" rel="stylesheet" href="/static/plugins/syntaxhighlighter/styles/shThemeRDark.css">
 </head>
@@ -101,6 +102,10 @@
             ));
         SyntaxHighlighter.defaults['toolbar'] = false;
         SyntaxHighlighter.all();
+
+        $('.content-container').$.each(function(index, val) {
+             $(d).emoji();
+        });
     });
     
 </script>
