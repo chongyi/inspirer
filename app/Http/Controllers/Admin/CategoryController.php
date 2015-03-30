@@ -52,7 +52,7 @@ class CategoryController extends Controller {
 			return redirect()->back()->withErrors($check->errors())->withInput();
 		}
 
-		Category::create($request->only('name', 'display_name', 'description', 'parent_id'));
+		Category::create($request->only('name', 'display_name', 'description'));
 
 		return redirect('admin/category');
 	}
@@ -100,7 +100,7 @@ class CategoryController extends Controller {
 
 		$category = Category::findOrFail($id);
 
-		foreach ($request->only('name', 'display_name', 'parent_id', 'description') as $key => $value) {
+		foreach ($request->only('name', 'display_name', 'description') as $key => $value) {
 			$category->{$key} = $value;
 		}
 
@@ -118,11 +118,7 @@ class CategoryController extends Controller {
 	public function destroy($id)
 	{
 		// traverse and delete
-		DB::transaction(function() use ($id) {
-			$self = Category::findOrFail($id);
-			$this->traverseToDelete($self->id);
-			$self->delete();
-		});
+		Category::findOrFail($id)->delete();
 
 		return redirect()->back();
 	}
