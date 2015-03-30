@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController');
     Route::resource('nav', 'NavController');
+    Route::resource('upload', 'UploadController');
 });
 
 Route::get('article/{id}', 'PageController@article');

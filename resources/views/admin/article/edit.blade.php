@@ -75,7 +75,11 @@
             flowChart : true,
             tex  : true,
             htmlDecode : true,
-            htmlDecode : "style,script,iframe,sub,sup"
+            htmlDecode : "style,script,iframe,sub,sup",
+            imageUpload : true,
+            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadToken : '{{ csrf_token() }}',
+            imageUploadURL : "/admin/upload",
         });
     });
 </script>
