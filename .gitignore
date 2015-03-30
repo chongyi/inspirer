@@ -5,3 +5,4 @@
 .env.php
 .env
 web.config
+composer.lock
