@@ -6,3 +6,4 @@
 .env
 web.config
 composer.lock
+DefaultSeeder.php
