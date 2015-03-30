@@ -103,8 +103,8 @@
         SyntaxHighlighter.defaults['toolbar'] = false;
         SyntaxHighlighter.all();
 
-        $('.content-container').$.each(function(index, val) {
-             $(d).emoji();
+        $('.content-container').each(function(index, val) {
+             $(val).emoji();
         });
     });
     
