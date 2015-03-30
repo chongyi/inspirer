@@ -1,4 +1,5 @@
 @extends('common')
+@section('title'){{ $article->title }} - @parent @stop
 @section('head')
 <ol class="breadcrumb">
     <li><a href="/">首页</a></li>

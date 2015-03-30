@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chongyi</title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>@section('title')灵感 - 来自生活的馈赠@show</title>
+    @yield('meta')
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-submenu.min.css">

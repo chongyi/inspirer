@@ -1,5 +1,5 @@
 @extends('common')
-
+@section('title'){{ $category->display_name }} - @parent @stop
 @section('head')
 <ol class="breadcrumb">
     <li><a href="/">首页</a></li>
