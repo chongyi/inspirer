@@ -40,5 +40,5 @@
             @endforelse
         </ul>
     </div>
-</div>>
+</div>
 @stop
