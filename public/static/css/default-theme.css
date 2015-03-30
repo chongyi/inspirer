@@ -112,7 +112,7 @@ body { background-color: #060A0F; color: #DCE1E4; font-family: 'agency_fbregular
   .article-list, .category-data, .content-container > .article-container { margin-right: 0; }
   .category-data { margin-left: 0; }
   .widget-container { position: relative; width: auto; border-top: solid 2px #2180C5; padding-top: 10px; }
-  .widget-container > ul > li { display: inline; margin-right: 10px; }
+  .widget-container > .widget > ul > li { display: inline; margin-right: 10px; }
 }
 
 @media screen and (max-width: 768px) {
