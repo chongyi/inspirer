@@ -109,14 +109,13 @@ body { background-color: #060A0F; color: #DCE1E4; font-family: 'agency_fbregular
 .category-view-widget > ul { list-style: none; padding: 0; margin-top: 15px; }
 
 @media screen and (max-width: 1024px) {
-  .article-list, .category-data, .content-container > .article-container { margin-right: 0; }
-  .category-data { margin-left: 0; }
+  .article-list, .category-data, .content-container > .article-container { margin-right: 0; border-right: 0; }
   .widget-container { position: relative; width: auto; border-top: solid 2px #2180C5; padding-top: 10px; }
   .widget-container > .widget > ul > li { display: inline; margin-right: 10px; }
 }
 
 @media screen and (max-width: 768px) {
-  .article-container > article { margin-left: 0; border-left: 0; }
+  .article-container > article, .category-data { margin-left: 0; border-left: 0; }
   .article-container > .article-information { position: relative; width: 100%; text-align: left; padding: 0; }
   .article-container > .article-information > li { position: relative; line-height: 20px; display: inline; margin-right: 10px; }
   .article-container > .article-information > li > i { position: relative; line-height: 16px; right: auto; margin-right: 5px; }
