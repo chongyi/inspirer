@@ -12,11 +12,10 @@
     <script type="text/javascript" src="/static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap-submenu.min.js"></script>
-    <script type="text/javascript" src="/static/plugins/syntaxhighlighter/scripts/shCore.js"></script>
-    <script type="text/javascript" src="/static/plugins/syntaxhighlighter/scripts/shAutoloader.js"></script>
+    
     <script type="text/javascript" src="/static/js/jquery.emoji.js"></script>
-    <link type="text/css" rel="stylesheet" href="/static/plugins/syntaxhighlighter/styles/shCore.css">
-    <link type="text/css" rel="stylesheet" href="/static/plugins/syntaxhighlighter/styles/shThemeRDark.css">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/prettify/r298/prettify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/prettify-theme.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -57,51 +56,13 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function() {
-        function path()
-        {
-            var args = arguments,
-            result = [];
-
-            for(var i = 0; i < args.length; i++)
-                result.push(args[i].replace('@', '/static/plugins/syntaxhighlighter/scripts/'));
-
-            return result
-        };
-
         $('pre').text(function(i, v) {
-            var attr = $(this).children('code').attr('class').replace(/language-(\w+)/, 'brush: $1;');
+            var attr = $(this).children('code').attr('class').replace(/language-(\w+)/, 'prettyprint linenums');
             $(this).attr('class', attr);
             return $(this).children('code').text();
         });
 
-        SyntaxHighlighter.autoloader.apply(null, path(
-            'applescript            @shBrushAppleScript.js',
-            'actionscript3 as3      @shBrushAS3.js',
-            'bash shell             @shBrushBash.js',
-            'coldfusion cf          @shBrushColdFusion.js',
-            'cpp c                  @shBrushCpp.js',
-            'c# c-sharp csharp      @shBrushCSharp.js',
-            'css                    @shBrushCss.js',
-            'delphi pascal          @shBrushDelphi.js',
-            'diff patch pas         @shBrushDiff.js',
-            'erl erlang             @shBrushErlang.js',
-            'groovy                 @shBrushGroovy.js',
-            'java                   @shBrushJava.js',
-            'jfx javafx             @shBrushJavaFX.js',
-            'js jscript javascript  @shBrushJScript.js',
-            'perl pl                @shBrushPerl.js',
-            'php                    @shBrushPhp.js',
-            'text plain             @shBrushPlain.js',
-            'py python              @shBrushPython.js',
-            'ruby rails ror rb      @shBrushRuby.js',
-            'sass scss              @shBrushSass.js',
-            'scala                  @shBrushScala.js',
-            'sql                    @shBrushSql.js',
-            'vb vbnet               @shBrushVb.js',
-            'xml xhtml xslt html    @shBrushXml.js'
-            ));
-        SyntaxHighlighter.defaults['toolbar'] = false;
-        SyntaxHighlighter.all();
+        prettyPrint();
 
         $('.content-container').each(function(index, val) {
              $(val).emoji();

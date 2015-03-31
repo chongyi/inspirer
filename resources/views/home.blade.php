@@ -1,5 +1,8 @@
 @extends('common')
-
+@section('meta')
+<meta name="keywords" content="灵感,inspirer,php,开发,学习,博客,blog,xopns">
+<meta name="description" content="生活，感之粼粼，问之潢潢。">
+@stop
 @section('body')
 <div class="article-list">
 	@forelse($articles as $article)

@@ -1,5 +1,10 @@
 @extends('common')
 @section('title'){{ $category->display_name }} - @parent @stop
+@section('meta')
+<meta name="keywords" content="{{ $category->display_name }}">
+<meta name="description" content="{{ $category->description }}">
+<meta name="author" content="chongyi@xopns.com">
+@stop
 @section('head')
 <ol class="breadcrumb">
     <li><a href="/">首页</a></li>
