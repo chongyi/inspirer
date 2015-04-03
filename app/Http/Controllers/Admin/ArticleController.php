@@ -52,7 +52,8 @@ class ArticleController extends Controller {
 	{
 		$check = Validator::make($request->all(), [
 			'title' => ['required', 'min:1', 'max: 255'],
-			'category_id' => ['required', 'numeric']
+			'category_id' => ['required', 'numeric'],
+			'sort' => ['numeric']
 			]);
 
 		if ($check->fails()) {
@@ -61,7 +62,7 @@ class ArticleController extends Controller {
 
 		extract(ArticleProcess::convertArticle($request->input('content')));
 
-		$insert = $request->only('title', 'category_id', 'keywords');
+		$insert = $request->only('title', 'category_id', 'keywords', 'sort');
 		$insert['content'] = $content;
 		$insert['description'] = $request->has('description') 
 			? $request->input('description') : strip_tags((new Parsedown)->text($description));
@@ -110,7 +111,8 @@ class ArticleController extends Controller {
 	{
 		$check = Validator::make($request->all(), [
 			'title' => ['required', 'min:1', 'max: 255'],
-			'category_id' => ['required', 'numeric']
+			'category_id' => ['required', 'numeric'],
+			'sort' => ['numeric']
 			]);
 
 		if ($check->fails()) {
@@ -119,7 +121,7 @@ class ArticleController extends Controller {
 
 		$article = Article::findOrFail($id);
 
-		$insert = $request->only('title', 'category_id', 'keywords');
+		$insert = $request->only('title', 'category_id', 'keywords', 'sort');
 		$insert = array_merge($insert, ArticleProcess::convertArticle($request->input('content')));
 		$insert['description'] = $request->has('description') 
 			? $request->input('description') : strip_tags((new Parsedown)->text($insert['description']));
@@ -130,6 +132,7 @@ class ArticleController extends Controller {
 		$article->keywords = $keywords;
 		$article->content = $content;
 		$article->description = $description;
+		$article->sort = $sort;
 		$article->save();
 
 		return redirect()->back();

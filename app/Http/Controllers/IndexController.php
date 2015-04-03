@@ -12,7 +12,9 @@ class IndexController extends CommonController {
 	public function index(Request $request)
     {
         $articles = Article::where('category_id', '!=', 0)
+            ->orderBy('sort', 'desc')
             ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
             ->skip(0)
             ->take(10)
             ->get();
