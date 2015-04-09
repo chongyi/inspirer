@@ -11,6 +11,7 @@
 			<li><i class="fa fa-calendar"></i>{{ date('Y-m-d', strtotime($article->created_at)) }}</li>
 			<li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
 			<li><i class="fa fa-inbox"></i><a href="{{ url('category', $article->category_id) }}">{{ $article->category->display_name }}</a></li>
+			@if($article->sort > 0)<li><i class="fa fa-arrow-up"></i>TOP</li>@endif
 		</ul>
 		<article>
             <a href="{{ url('article', $article->id) }}" class="article-title"><h1>{{ $article->title }}</h1></a>

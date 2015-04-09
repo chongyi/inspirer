@@ -128,3 +128,14 @@ body { background-color: #060A0F; color: #DCE1E4; font-family: 'agency_fbregular
 
 
 code { color: #fcfcfc; background-color: #2180C5; border: solid 1px #80BEEC; }
+
+p { line-height: 2em; }
+.article-body { color: #A1AAB0; }
+.article-body blockquote { background: #181D20; font-size: 120%; border-left-color: #2180C5; }
+.article-body blockquote p { line-height: 1.5em; }
+.article-body h1, 
+.article-body h2, 
+.article-body h3, 
+.article-body h4, 
+.article-body h5, 
+.article-body h6 { border-bottom: solid 1px #366281; padding-bottom: 8px; }

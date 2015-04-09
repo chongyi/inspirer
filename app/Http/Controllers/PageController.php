@@ -20,7 +20,13 @@ class PageController extends CommonController {
 
     public function category($id)
     {
-        $category = Category::with('articles')->where('id', '=', $id)->firstOrFail();
+        $category = Category::with(array('articles' => function($query)
+        {
+            $query->orderBy('sort', 'desc')
+                ->orderBy('created_at', 'desc')
+                ->orderBy('id', 'desc');
+
+        }))->where('id', '=', $id)->firstOrFail();
 
         return view('page.category')->withCategory($category);
     }

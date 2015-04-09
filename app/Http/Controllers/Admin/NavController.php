@@ -44,14 +44,15 @@ class NavController extends Controller {
 	{
 		$check = Validator::make($request->all(), [
 			'title' => ['required', 'min:1', 'max: 20'],
-			'link' => ['required']
+			'link' => ['required'],
+			'sort' => ['numeric']
 			]);
 
 		if ($check->fails()) {
 			return redirect()->back()->withErrors($check->errors());
 		}
 
-		Nav::create($request->only('title', 'link'));
+		Nav::create($request->only('title', 'link', 'sort'));
 
 		return redirect('admin/nav');
 	}
@@ -86,11 +87,12 @@ class NavController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
 		$check = Validator::make($request->all(), [
 			'title' => ['required', 'min:1', 'max: 20'],
-			'link' => ['required']
+			'link' => ['required'],
+			'sort' => ['numeric']
 			]);
 
 		if ($check->fails()) {
@@ -101,6 +103,7 @@ class NavController extends Controller {
 
 		$nav->title = $request->input('title');
 		$nav->link = $request->input('link');
+		$nav->sort = $request->input('sort');
 		$nav->save();
 
 		return redirect()->back();

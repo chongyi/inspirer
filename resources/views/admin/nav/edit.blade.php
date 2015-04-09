@@ -36,6 +36,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label>排序</label>
+                                <input name="sort" type="number" class="form-control" value="@if(old('sort')){{old('sort')}}@elseif(isset($nav)){{ $nav->sort }}@endif">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>

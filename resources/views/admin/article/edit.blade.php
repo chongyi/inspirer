@@ -56,6 +56,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label>置顶</label>
+                                <input name="sort" type="number" class="form-control" value="@if(isset($article)){{ $article->sort }}@endif">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>

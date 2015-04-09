@@ -10,7 +10,7 @@ class CommonController extends Controller {
 
 	public function __construct()
     {
-        $navs = Nav::all();
+        $navs = Nav::orderBy('sort', 'desc')->get();
 
         $function = function($closure, $navs, $pid = 0) {
             $return = null;
