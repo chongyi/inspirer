@@ -58,10 +58,12 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('pre').text(function(i, v) {
-            var attr = $(this).children('code').attr('class').replace(/language-(\w+)/, 'prettyprint linenums');
-            $(this).attr('class', attr);
+            // var attr = $(this).children('code').attr('class').replace(/language-(\w+)/, 'prettyprint linenums');
+            $(this).attr('class', 'prettyprint linenums');
             return $(this).children('code').text();
         });
+
+        $('table').addClass('table');
 
         prettyPrint();
 
