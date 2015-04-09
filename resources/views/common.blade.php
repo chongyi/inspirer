@@ -50,6 +50,7 @@
             <div class="col-md-12">
                 <p>Copyright © 2012 XOPNS·Studo.All rights reserved.</p>
                 <p>Powered by XOPNS·Database - WebsiteDeveloper.</p>
+                <p>{!! $options['statistics'] !!}</p>
             </div>
         </div>
     </div>

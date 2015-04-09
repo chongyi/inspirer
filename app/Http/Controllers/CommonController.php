@@ -29,8 +29,17 @@ class CommonController extends Controller {
             return $return;
         };
 
+        $d = Option::all();
+        
+        $options = [];
+
+        foreach ($d as $option) {
+            $options[$option->key] = $option->value;
+        }
+
         view()->share('navs', $function($function, $navs));
         view()->share('categories', Category::all());
+        view()->share('options', $options);
     }
 
 }
