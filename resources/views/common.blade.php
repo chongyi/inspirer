@@ -30,7 +30,7 @@
             <div class="col-md-12">         
                 <ul class="nav nav-tabs" id="xochost-nav-collapse">
                     @foreach($navs as $nav)
-                    <li><a href="{{ $nav->link }}">{{ $nav->title }}</a></li>
+                    <li><a title="{{ $nav->title }}" href="{{ $nav->link }}">{{ $nav->title }}</a></li>
                     @endforeach
                 </ul>
 

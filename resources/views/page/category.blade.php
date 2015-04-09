@@ -7,7 +7,7 @@
 @stop
 @section('head')
 <ol class="breadcrumb">
-    <li><a href="/">首页</a></li>
+    <li><a title="首页" href="/">首页</a></li>
     <li class="active">{{ $category->display_name }}</li>
 </ol>
 @stop
@@ -23,7 +23,7 @@
         <ul>
             @forelse($category->articles as $article)
             <li>
-                <a href="{{ url('article', $article->id) }}"><h1>{{ $article->title }}</h1></a>
+                <a href="{{ url('article', $article->id) }}" title="{{ $article->title }}" target="_blank"><h1>{{ $article->title }}</h1></a>
                 <ul class="article-information">
                     <li><i class="fa fa-calendar"></i>{{ date('Y-m-d', strtotime($article->created_at)) }}</li>
                     <li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
@@ -40,7 +40,7 @@
         <h1>分类</h1>
         <ul>
             @forelse($categories as $category)
-            <li><a href="{{ url('category', $category->id) }}">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
+            <li><a title="{{ $category->display_name }}" href="{{ url('category', $category->id) }}">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
             @empty
             @endforelse
         </ul>

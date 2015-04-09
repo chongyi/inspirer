@@ -14,12 +14,12 @@
 			@if($article->sort > 0)<li><i class="fa fa-arrow-up"></i>TOP</li>@endif
 		</ul>
 		<article>
-            <a href="{{ url('article', $article->id) }}" class="article-title"><h1>{{ $article->title }}</h1></a>
+            <a title="{{ $article->title }}" href="{{ url('article', $article->id) }}" class="article-title" target="_blank"><h1>{{ $article->title }}</h1></a>
 			<div class="article-body">
 				{!! \App\Inspirer\ArticleProcess::getSummary($article->content, $parse) !!}
 			</div>
 			<div class="article-control">
-				<a href="{{ url('article', $article->id) }}#page-break-anchor" class="btn btn-primary">Read more</a>
+				<a title="{{ $article->title }}" href="{{ url('article', $article->id) }}#page-break-anchor" class="btn btn-primary">Read more</a>
 			</div>
 		</article>
 	</div>
@@ -32,7 +32,7 @@
 		<h1>分类</h1>
 		<ul>
 			@forelse($categories as $category)
-			<li><a href="{{ url('category', $category->id) }}">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
+			<li><a title="{{ $category->display_name }}" href="{{ url('category', $category->id) }}">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
 			@empty
 			@endforelse
 		</ul>
