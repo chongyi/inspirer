@@ -10,7 +10,7 @@
 		<ul class="article-information">
 			<li><i class="fa fa-calendar"></i>{{ date('Y-m-d', strtotime($article->created_at)) }}</li>
 			<li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
-			<li><i class="fa fa-inbox"></i><a href="{{ url('category', $article->category_id) }}">{{ $article->category->display_name }}</a></li>
+			<li><i class="fa fa-inbox"></i><a title="{{ $article->category->display_name }}" href="{{ url('category', $article->category_id) }}">{{ $article->category->display_name }}</a></li>
 			@if($article->sort > 0)<li><i class="fa fa-arrow-up"></i>TOP</li>@endif
 		</ul>
 		<article>
