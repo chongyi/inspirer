@@ -52,14 +52,14 @@
             @endforelse
         </ul>
     </div>
-</div>
-<div class="widget category-view-widget">
-    <h1>标签</h1>
-    <ul>
-        @forelse($tags as $tag)
-        <li><a title="{{ $tag->display_name }}" href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
-        @empty
-        @endforelse
-    </ul>
+    <div class="widget category-view-widget">
+        <h1>标签</h1>
+        <ul>
+            @forelse($tags as $tag)
+            <li><a title="{{ $tag->display_name }}" href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
+            @empty
+            @endforelse
+        </ul>
+    </div>
 </div>
 @stop
