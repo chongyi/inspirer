@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Nav;
+use App\Inspirer\Models\Nav;
 use Illuminate\Http\Request;
 use Validator;
 

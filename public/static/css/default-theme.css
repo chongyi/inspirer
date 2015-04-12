@@ -139,3 +139,6 @@ p { line-height: 2em; }
 .article-body h4, 
 .article-body h5, 
 .article-body h6 { border-bottom: solid 1px #366281; padding-bottom: 8px; }
+
+.label { font-weight: normal; }
+.label a { color: #fff; }

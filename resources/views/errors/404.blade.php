@@ -1,12 +1,12 @@
 <html>
 <head>
-    <title>寻找灵感中！- 灵感 - 来自生活的馈赠</title>
+    <title>毫无头绪！- 灵感 - 来自生活的馈赠</title>
 </head>
 <body>
     <div class="container">
         <div class="content">
-            <div class="title">寻找灵感中……敬请期待</div>
-            <small>这是一个 503 页面</small>
+            <div class="title">咦？我的灵感呢！唉...</div>
+            <small>这是一个 404 页面，请确认您真的是在寻找这个内容。</small>
         </div>
     </div>
     <style>

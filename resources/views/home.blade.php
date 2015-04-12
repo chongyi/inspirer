@@ -12,9 +12,17 @@
 			<li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
 			<li><i class="fa fa-inbox"></i><a title="{{ $article->category->display_name }}" href="{{ url('category', $article->category_id) }}">{{ $article->category->display_name }}</a></li>
 			@if($article->sort > 0)<li><i class="fa fa-arrow-up"></i>TOP</li>@endif
+			@if(count($article->tags))
+			<li><i class="fa fa-tags"></i>
+				@foreach($article->tags as $tag)
+				<span class="label label-default"><a href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }}</a></span>
+				
+				@endforeach
+			</li>
+			@endif
 		</ul>
 		<article>
-            <a title="{{ $article->title }}" href="{{ url('article', $article->id) }}" class="article-title" target="_blank"><h1>{{ $article->title }}</h1></a>
+            <a title="{{ $article->title }}" href="{{ url('article', $article->id) }}" class="article-title"><h1>{{ $article->title }}</h1></a>
 			<div class="article-body">
 				{!! \App\Inspirer\ArticleProcess::getSummary($article->content, $parse) !!}
 			</div>
@@ -33,6 +41,15 @@
 		<ul>
 			@forelse($categories as $category)
 			<li><a title="{{ $category->display_name }}" href="{{ url('category', $category->id) }}">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
+			@empty
+			@endforelse
+		</ul>
+	</div>
+	<div class="widget category-view-widget">
+		<h1>标签</h1>
+		<ul>
+			@forelse($tags as $tag)
+			<li><a title="{{ $tag->display_name }}" href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
 			@empty
 			@endforelse
 		</ul>

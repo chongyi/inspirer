@@ -1,4 +1,4 @@
-<?php namespace App\Models;
+<?php namespace App\Inspirer\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class Category extends Model {
 
     public function articles()
     {
-        return $this->hasMany('App\Models\Article');
+        return $this->hasMany('App\Inspirer\Models\Article');
     }
 
 }

@@ -2,8 +2,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
-use App\Models\Category;
+use App\Inspirer\Models\Article;
+use App\Inspirer\Models\Tag;
+use App\Inspirer\Models\Category;
 use App\Inspirer\ArticleProcess;
 use Illuminate\Http\Request;
 use Validator;
@@ -40,7 +41,9 @@ class ArticleController extends Controller {
 	{
 		$categories = Category::all();
 
-		return view('admin.article.edit', ['categories' => $categories]);
+		$tags = Tag::all();
+
+		return view('admin.article.edit', ['categories' => $categories, 'tags' => $tags]);
 	}
 
 	/**
@@ -53,11 +56,12 @@ class ArticleController extends Controller {
 		$check = Validator::make($request->all(), [
 			'title' => ['required', 'min:1', 'max: 255'],
 			'category_id' => ['required', 'numeric'],
-			'sort' => ['numeric']
+			'sort' => ['numeric'],
+			'tag' => ['array']
 			]);
 
 		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors());
+			return redirect()->back()->withErrors($check->errors())->withInput();;
 		}
 
 		extract(ArticleProcess::convertArticle($request->input('content')));
@@ -67,7 +71,9 @@ class ArticleController extends Controller {
 		$insert['description'] = $request->has('description') 
 			? $request->input('description') : strip_tags((new Parsedown)->text($description));
 
-		Article::create($insert);
+		$article = Article::create($insert);
+
+		$article->tags()->sync($request->input('tag', []));
 
 		return redirect('admin/article');
 
@@ -98,7 +104,15 @@ class ArticleController extends Controller {
 
 		$categories = Category::all();
 
-		return view('admin.article.edit', ['categories' => $categories, 'article' => $article]);
+		$tags = Tag::all();
+
+		$tagSelect = [];
+
+		foreach ($article->tags as $tag) {
+			$tagSelect[] = $tag->id;
+		}
+
+		return view('admin.article.edit', ['categories' => $categories, 'article' => $article, 'tags' => $tags, 'tagSelect' => $tagSelect]);
 	}
 
 	/**
@@ -112,11 +126,12 @@ class ArticleController extends Controller {
 		$check = Validator::make($request->all(), [
 			'title' => ['required', 'min:1', 'max: 255'],
 			'category_id' => ['required', 'numeric'],
-			'sort' => ['numeric']
+			'sort' => ['numeric'],
+			'tag' => ['array']
 			]);
 
 		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors());
+			return redirect()->back()->withErrors($check->errors())->withInput();;
 		}
 
 		$article = Article::findOrFail($id);
@@ -134,6 +149,8 @@ class ArticleController extends Controller {
 		$article->description = $description;
 		$article->sort = $sort;
 		$article->save();
+
+		$article->tags()->sync($request->input('tag', []));
 
 		return redirect()->back();
 	}

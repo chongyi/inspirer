@@ -1,4 +1,4 @@
-<?php namespace App\Models;
+<?php namespace App\Inspirer\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,12 @@ class Article extends Model {
 
 	public function category()
     {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('App\Inspirer\Models\Category');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Inspirer\Models\Tag');
     }
 
 }

@@ -1,5 +1,4 @@
 @extends('admin.base')
-
 @section('content')
 @if (count($errors) > 0)
 <div class="alert alert-danger alert-dismissible">
@@ -14,17 +13,17 @@
 @endif
 <div class="row">
     <div class="col-md-12">
-        <form method="post" action="{{ url(isset($category) ? "admin/category/{$category->id}" : 'admin/category') }}" id="category-edit">
+        <form method="post" action="{{ url(isset($tag) ? "admin/tag/{$tag->id}" : 'admin/tag') }}" id="article-edit">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            @if(isset($category))<input type="hidden" name="_method" value="PUT">@endif
+            @if(isset($tag))<input type="hidden" name="_method" value="PUT">@endif
             <div class="panel panel-default">
-                <div class="panel-heading">分类</div>
+                <div class="panel-heading">标签</div>
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
                                 <label>标题</label>
-                                <input class="form-control" placeholder="输入分类标题" name="display_name" value="@if(old('display_name')){{old('display_name')}}@elseif(isset($category)){{ $category->display_name }}@endif">
+                                <input class="form-control" placeholder="标签显示的标题" name="display_name" value="@if(old('display_name')){{ old('display_name') }}@elseif(isset($tag)){{ $tag->display_name }}@endif">
                             </div>
                         </div>
                     </div>
@@ -32,7 +31,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label>名称</label>
-                                <input class="form-control" placeholder="输入分类名，只允许英文、数字、-和_" name="name" value="@if(old('name')){{old('name')}}@elseif(isset($category)){{ $category->name }}@endif">
+                                <input class="form-control" placeholder="用于在地址栏快速访问" name="name" value="@if(old('name')){{ old('name') }}@elseif(isset($tag)){{ $tag->name }}@endif">
                             </div>
                         </div>
                     </div>
@@ -40,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label>描述</label>
-                                <textarea name="description" class="form-control">@if(old('description')){{old('description')}}@elseif(isset($category)){{ $category->description }}@endif</textarea>
+                                <textarea name="description" class="form-control">@if(old('description')){{ old('description') }}@elseif(isset($tag)){{ $tag->description }}@endif</textarea>
                             </div>
                         </div>
                     </div>

@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Category;
-use App\Models\Article;
-use App\Models\Nav;
+use App\Inspirer\Models\User;
+use App\Inspirer\Models\Category;
+use App\Inspirer\Models\Article;
+use App\Inspirer\Models\Nav;
 
 class DefaultSeeder extends Seeder {
 

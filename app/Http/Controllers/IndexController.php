@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\CommonController;
 use Parsedown;
 use Illuminate\Http\Request;
-use App\Models\Article;
+use App\Inspirer\Models\Article;
 
 
 class IndexController extends CommonController {
