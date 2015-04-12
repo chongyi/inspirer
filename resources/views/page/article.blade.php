@@ -17,7 +17,14 @@
     <ul class="article-information">
         <li><i class="fa fa-calendar"></i>{{ date('Y-m-d', strtotime($article->created_at)) }}</li>
         <li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
-        <li><i class="fa fa-inbox"></i>{{ $article->category->display_name }}</li>
+        <li><i class="fa fa-inbox"></i><a href="{{ url('category', $article->category->id) }}">{{ $article->category->display_name }}</a></li>
+        @if(count($article->tags))
+        <li><i class="fa fa-tags"></i>
+            @foreach($article->tags as $tag)
+            <span class="label label-default"><a href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }}</a></span>
+            @endforeach
+        </li>
+        @endif
     </ul>
     <article>
         <a href="#" title="{{ $article->title }}" class="article-title"><h1>{{ $article->title }}</h1></a>
@@ -52,5 +59,14 @@
             @endforelse
         </ul>
     </div>
+</div>
+<div class="widget category-view-widget">
+    <h1>标签</h1>
+    <ul>
+        @forelse($tags as $tag)
+        <li><a title="{{ $tag->display_name }}" href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
+        @empty
+        @endforelse
+    </ul>
 </div>
 @stop

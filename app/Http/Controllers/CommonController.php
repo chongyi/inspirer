@@ -2,10 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Inspirer\Models\Category;
+use App\Inspirer\Models\Tag;
 use Illuminate\Http\Request;
-use App\Models\Nav;
-use App\Models\Option;
+use App\Inspirer\Models\Nav;
+use App\Inspirer\Models\Option;
 
 class CommonController extends Controller {
 
@@ -40,6 +41,7 @@ class CommonController extends Controller {
 
         view()->share('navs', $function($function, $navs));
         view()->share('categories', Category::all());
+        view()->share('tags', Tag::all());
         view()->share('options', $options);
     }
 

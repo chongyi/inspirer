@@ -2,16 +2,15 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Inspirer\Models\Category;
-use Illuminate\Http\Request;
+use App\Inspirer\Models\Tag;
 use Validator;
-use DB;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller {
+class TagController extends Controller {
 
 	public function __construct()
 	{
-		view()->share('active', 'category');
+		view()->share('active', 'tag');
 	}
 
 	/**
@@ -19,11 +18,17 @@ class CategoryController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		$categories = Category::all();
+		if ($request->ajax()) {
+			return response(Tag::all());
+		}
 
-		return view('admin.category.index', ['categories' => $categories]);
+		$tags = Tag::with('articles')
+			->orderBy('created_at', 'desc')
+			->paginate(8);
+
+		return view('admin.tag.index', ['tags' => $tags]);
 	}
 
 	/**
@@ -33,7 +38,7 @@ class CategoryController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.category.edit');
+		return view('admin.tag.edit');
 	}
 
 	/**
@@ -44,17 +49,17 @@ class CategoryController extends Controller {
 	public function store(Request $request)
 	{
 		$check = Validator::make($request->all(), [
+			'display_name' => ['required', 'min:1', 'max: 255'],
 			'name' => ['required', 'enstring'],
-			'display_name' => ['required'],
 			]);
 
 		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors())->withInput();
+			return redirect()->back()->withErrors($check->errors())->withInput();;
 		}
 
-		Category::create($request->only('name', 'display_name', 'description'));
+		Tag::create($request->only('name', 'display_name', 'description'));
 
-		return redirect('admin/category');
+		return redirect('admin/tag');
 	}
 
 	/**
@@ -65,7 +70,7 @@ class CategoryController extends Controller {
 	 */
 	public function show($id)
 	{
-		
+		//
 	}
 
 	/**
@@ -74,11 +79,11 @@ class CategoryController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id, Request $request)
+	public function edit($id)
 	{
-		$category = Category::findOrFail($id);
+		$tag = Tag::findOrFail($id);
 
-		return view('admin.category.edit', ['category' => $category]);
+		return view('admin.tag.edit', ['tag' => $tag]);
 	}
 
 	/**
@@ -90,21 +95,21 @@ class CategoryController extends Controller {
 	public function update($id, Request $request)
 	{
 		$check = Validator::make($request->all(), [
+			'display_name' => ['required', 'min:1', 'max: 255'],
 			'name' => ['required', 'enstring'],
-			'display_name' => ['required'],
 			]);
 
 		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors())->withInput();
+			return redirect()->back()->withErrors($check->errors())->withInput();;
 		}
 
-		$category = Category::findOrFail($id);
+		$tag = Tag::findOrFail($id);
 
-		foreach ($request->only('name', 'display_name', 'description') as $key => $value) {
-			$category->{$key} = $value;
-		}
+		$tag->display_name = $request->input('display_name');
+		$tag->name = $request->input('name');
+		$tag->description = $request->input('description', '');
 
-		$category->save();
+		$tag->save();
 
 		return redirect()->back();
 	}
@@ -117,19 +122,9 @@ class CategoryController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		// traverse and delete
-		Category::findOrFail($id)->delete();
+		Tag::findOrFail($id)->delete();
 
-		return redirect()->back();
-	}
-
-	protected function traverseToDelete($parent)
-	{
-		$t = Category::where('parent_id', '=', $parent)->get();
-		foreach ($t as $category) {
-			$this->traverseToDelete($category->id);
-			$category->delete();
-		}
+		return redirect('admin/tag');
 	}
 
 }

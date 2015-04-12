@@ -34,7 +34,9 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('category', 'CategoryController');
     Route::resource('nav', 'NavController');
     Route::resource('upload', 'UploadController');
+    Route::resource('tag', 'TagController');
 });
 
 Route::get('article/{id}', 'PageController@article');
 Route::get('category/{id}', 'PageController@category');
+Route::get('tag/{id}', 'PageController@tag');

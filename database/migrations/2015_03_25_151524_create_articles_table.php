@@ -17,11 +17,13 @@ class CreateArticlesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('title');
+			$table->string('name')->nullable();
 			$table->integer('category_id');
 			$table->string('keywords');
 			$table->text('description');
 			$table->mediumText('content');
 			$table->tinyInteger('sort')->default(0);
+			$table->integer('views')->default(0);
 			$table->engine = 'innodb';
 		});
 	}
