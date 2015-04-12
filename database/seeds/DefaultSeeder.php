@@ -18,9 +18,9 @@ class DefaultSeeder extends Seeder {
     {
         
         User::create([
-            'username' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => bcrypt('admin')
+            'username' => 'xopnschongyi',
+            'email' => 'chongyi@xopns.com',
+            'password' => bcrypt('xopns3847878yuanye_chongyi')
             ]);
 
         Category::create([
