@@ -145,3 +145,5 @@ p { line-height: 2em; }
 
 .default-footer ul.link { list-style: none; padding: 5px 15px; border-top: solid 1px #0C436B; background: rgba(0, 45, 77, 0.5); margin: 0 -15px; }
 .default-footer ul.link > li { padding: 0; display: inline; margin-right: 5px; }
+
+.article-container img { max-width: 100%; }
