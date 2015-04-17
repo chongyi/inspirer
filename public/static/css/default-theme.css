@@ -148,3 +148,4 @@ p { line-height: 2em; }
 
 .article-container img { max-width: 100%; }
 .article-container a { word-wrap: break-word; }
+.article-container code { word-wrap: break-word; }
