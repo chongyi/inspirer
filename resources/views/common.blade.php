@@ -51,6 +51,10 @@
                 <p>Copyright © 2012 XOPNS·Studo.All rights reserved.</p>
                 <p>Powered by XOPNS·Database - WebsiteDeveloper.</p>
                 <p>{!! isset($options['statistics']) ? $options['statistics'] : '' !!}</p>
+                <ul class="link">
+                    <li>友情链接</li>
+                    <li><a href="http://www.biner.me/">宾呐·之谜</a></li>
+                </ul>
             </div>
         </div>
     </div>
