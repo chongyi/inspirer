@@ -147,3 +147,4 @@ p { line-height: 2em; }
 .default-footer ul.link > li { padding: 0; display: inline; margin-right: 5px; }
 
 .article-container img { max-width: 100%; }
+.article-container a { word-wrap: break-word; }
