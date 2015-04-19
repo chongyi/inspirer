@@ -99,7 +99,7 @@ body { background-color: #1D2227; color: #DCE1E4; font-family: 'agency_fbregular
 .category-data > ul > li > ul.article-information { list-style: none; padding: 0; }
 .category-data > ul > li > ul.article-information > li { display: inline; margin-right: 10px; color: #80BEEC; }
 .category-data > ul > li > ul.article-information > li > i { margin-right: 5px; color: #DCE1E4; }
-.category-data > .category-information { position: absolute; width: 240px; margin-left: -240px; }
+.category-data > .category-information { position: absolute; width: 240px; margin-left: -240px; padding-right: 10px; }
 
 .content-container > .article-container { margin-right: 300px; border-right: dotted 1px #2180C5; border-bottom: 0; }
 
@@ -108,7 +108,7 @@ body { background-color: #1D2227; color: #DCE1E4; font-family: 'agency_fbregular
 
 .category-view-widget > ul { list-style: none; padding: 0; margin-top: 15px; }
 
-.page-information { position: absolute; width: 240px; margin-left: -240px; padding: 0; }
+.page-information { position: absolute; width: 240px; margin-left: -240px; padding-right: 10px; }
 .page-information > h1 { margin: 0; padding: 10px 0; }
 
 @media screen and (max-width: 1024px) {

@@ -14,12 +14,12 @@
 @section('body')
 <div class="article-container">
     <article>
-        <ul class="page-information">
+        <div class="page-information">
             <h1>{{ $article->title }}</h1>
             <div>
                 {!! \App\Inspirer\ArticleProcess::getContent($article->description) !!}
             </div>
-        </ul>
+        </div>
         <div class="article-body">
             {!! \App\Inspirer\ArticleProcess::getContent($article->content) !!}
         </div>
