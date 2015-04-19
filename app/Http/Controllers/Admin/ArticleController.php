@@ -57,6 +57,7 @@ class ArticleController extends Controller {
 			'title' => ['required', 'min:1', 'max: 255'],
 			'category_id' => ['required', 'numeric'],
 			'sort' => ['numeric'],
+			'name' => ['alpha_dash'],
 			'tag' => ['array']
 			]);
 
@@ -66,7 +67,7 @@ class ArticleController extends Controller {
 
 		extract(ArticleProcess::convertArticle($request->input('content')));
 
-		$insert = $request->only('title', 'category_id', 'keywords', 'sort');
+		$insert = $request->only('title', 'category_id', 'keywords', 'sort', 'name');
 		$insert['content'] = $content;
 		$insert['description'] = $request->has('description') 
 			? $request->input('description') : strip_tags((new Parsedown)->text($description));
@@ -127,6 +128,7 @@ class ArticleController extends Controller {
 			'title' => ['required', 'min:1', 'max: 255'],
 			'category_id' => ['required', 'numeric'],
 			'sort' => ['numeric'],
+			'name' => ['alpha_dash'],
 			'tag' => ['array']
 			]);
 
@@ -136,7 +138,7 @@ class ArticleController extends Controller {
 
 		$article = Article::findOrFail($id);
 
-		$insert = $request->only('title', 'category_id', 'keywords', 'sort');
+		$insert = $request->only('title', 'category_id', 'keywords', 'sort', 'name');
 		$insert = array_merge($insert, ArticleProcess::convertArticle($request->input('content')));
 		$insert['description'] = $request->has('description') 
 			? $request->input('description') : strip_tags((new Parsedown)->text($insert['description']));
@@ -148,6 +150,9 @@ class ArticleController extends Controller {
 		$article->content = $content;
 		$article->description = $description;
 		$article->sort = $sort;
+		if (isset($name)) {
+			$article->name = $name;
+		}
 		$article->save();
 
 		$article->tags()->sync($request->input('tag', []));

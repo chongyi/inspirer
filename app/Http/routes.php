@@ -40,3 +40,5 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 Route::get('article/{id}', 'PageController@article');
 Route::get('category/{id}', 'PageController@category');
 Route::get('tag/{id}', 'PageController@tag');
+Route::get('{name}', 'PageController@target')->where('name', '[-_A-Za-z0-9]+');
+Route::get('about', 'PageController@about');

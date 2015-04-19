@@ -36,6 +36,14 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-6">
+                                <label>名称</label>
+                                <input class="form-control" placeholder="输入文章名称" name="name" value="@if(old('name')){{ old('name') }}@elseif(isset($article)){{ $article->name }}@endif">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <label>分类</label>
                                 <select class="form-control" name="category_id">
                                     <option value="0" @if(old('category_id') === 0) selected @elseif(isset($article) && $article->category_id == 0) selected @endif>独立页面</option>

@@ -44,4 +44,18 @@ class PageController extends CommonController {
 
         return view('page.tag')->withTag($tag);
     }
+
+    public function target($name)
+    {
+        if ($article = Article::where('name', '=', $name)->first()) {
+            if ($article->category_id == 0) {
+                return view('page.page')->withArticle($article);
+            }
+            return view('page.article')->withArticle($article);
+        } elseif ($category = Category::where('name', '=', $name)->first()) {
+            return view('page.category')->withCategory($category);
+        }
+
+        abort(404);
+    }
 }

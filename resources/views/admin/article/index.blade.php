@@ -24,7 +24,7 @@
                         <tr>
                             <td>{{ $article->id }}</td>
                             <td>{{ $article->title }}</td>
-                            <td>{{ $article->category->display_name }}</td>
+                            <td>@if(isset($article->category)){{ $article->category->display_name }}@else 独立页面 @endif</td>
                             <td>{{ $article->description }}</td>
                             <td>{{ $article->created_at }}</td>
                             <td>{{ $article->updated_at }}</td>
