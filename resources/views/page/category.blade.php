@@ -20,8 +20,8 @@
                 {!! \App\Inspirer\ArticleProcess::getContent($category->description) !!}
             </div>
         </div>
-        <ul>
-            @forelse($category->articles as $article)
+        <ul class="list">
+            @forelse($articles as $article)
             <li>
                 <a href="{{ url('article', $article->id) }}" title="{{ $article->title }}"><h1>{{ $article->title }}</h1></a>
                 <ul class="article-information">
@@ -40,6 +40,8 @@
             @empty
             @endforelse
         </ul>
+
+        {!! $articles->render() !!}
     </div>
 
 <div class="widget-container">

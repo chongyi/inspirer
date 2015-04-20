@@ -31,7 +31,7 @@ class PageController extends CommonController {
 
         }))->where('id', '=', $id)->firstOrFail();
 
-        return view('page.category')->withCategory($category);
+        return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
     }
 
     public function tag($id)
@@ -53,7 +53,7 @@ class PageController extends CommonController {
             }
             return view('page.article')->withArticle($article);
         } elseif ($category = Category::where('name', '=', $name)->first()) {
-            return view('page.category')->withCategory($category);
+            return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
         }
 
         abort(404);

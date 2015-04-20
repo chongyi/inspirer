@@ -33,6 +33,8 @@
 	</div>
 	@empty
 	@endforelse
+
+	{!! $articles->render() !!}
 </div>
 	
 <div class="widget-container">
