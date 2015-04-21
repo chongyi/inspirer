@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@section('title') 灵感 - 来自生活的馈赠@show</title>
+    <title>@section('title')灵感 - 来自生活的馈赠@show</title>
     @yield('meta')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -18,29 +18,45 @@
     <link rel="stylesheet" type="text/css" href="/static/css/prettify-theme.css">
 </head>
 <body>
-    <div class="c-container">
-        <div class="c-header">
-            <div class="c-logo">
-                <img src="/static/images/common/logo.png">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="xochost-brand">
+                    <img src="/static/images/common/logo.png" class="xochost-brand-img">
+                </div>
             </div>
-            <ul class="nav nav-tabs">
-                @foreach($navs as $nav)
-                <li><a title="{{ $nav->title }}" href="{{ $nav->link }}">{{ $nav->title }}</a></li>
-                @endforeach
-            </ul>
         </div>
-        <div class="c-body">
+        <div id="navbar" class="row nav-container" style="margin-bottom: 10px;">
+            <div class="col-md-12">         
+                <ul class="nav nav-tabs" id="xochost-nav-collapse">
+                    @foreach($navs as $nav)
+                    <li><a title="{{ $nav->title }}" href="{{ $nav->link }}">{{ $nav->title }}</a></li>
+                    @endforeach
+                </ul>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @yield('head')
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 content-container">
             @yield('body')
+            </div>
         </div>
-    </div>
-    <div class="c-footer">
-        <p>Copyright © 2012 XOPNS·Studo.All rights reserved.</p>
-        <p>Powered by XOPNS·Database - WebsiteDeveloper.</p>
-        <p>{!! isset($options['statistics']) ? $options['statistics'] : '' !!}</p>
-        <ul class="link">
-            <li>友情链接</li>
-            <li><a href="http://www.biner.me/">宾呐·之谜</a></li>
-        </ul>
+        <div id="footer" class="row default-footer">
+            <div class="col-md-12">
+                <p>Copyright © 2012 XOPNS·Studo.All rights reserved.</p>
+                <p>Powered by XOPNS·Database - WebsiteDeveloper.</p>
+                <p>{!! isset($options['statistics']) ? $options['statistics'] : '' !!}</p>
+                <ul class="link">
+                    <li>友情链接</li>
+                    <li><a href="http://www.biner.me/">宾呐·之谜</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript">
