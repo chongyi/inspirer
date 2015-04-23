@@ -10,7 +10,7 @@
     font-style: normal;
 }
 
-body { background: #0C2030; color: #DCE1E4; font-family: 'agency_fbregular', 'Microsoft Yahei', sans-serif; }
+body { background: #000; color: #DCE1E4; font-family: 'agency_fbregular', 'Microsoft Yahei', sans-serif; }
 
 .xochost-brand { display: block; box-sizing: border-box; padding-bottom: 10px; position: absolute; z-index: 10; }
 .xochost-brand-img { display: block; position: relative; }
@@ -137,7 +137,7 @@ p { line-height: 2em; }
 
 /* new style */
 
-.c-container { position: relative; margin-left: 240px; border-left: solid 1px #3B5C71; border-bottom: solid 1px #3B5C71; box-shadow: 0 0 12px 0 rgba(74, 138, 190, 0.46); background-color: #1D2227; }
+.c-container { position: relative; margin-left: 240px; border-left: solid 1px #355F7B; border-bottom: solid 1px #355F7B; box-shadow: 0 0 12px 0 rgba(74, 138, 190, 0.46); background-color: #1D2227; }
 
 .c-header { border-bottom: solid 3px #2180C5; position: relative; }
 .c-header > .c-logo { position: absolute; margin-left: -240px; width: 240px; }
