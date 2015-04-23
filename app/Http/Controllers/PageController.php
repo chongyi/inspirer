@@ -42,7 +42,7 @@ class PageController extends CommonController {
                 ->orderBy('id', 'desc');
         }))->where('id', '=', $id)->firstOrFail();
 
-        return view('page.tag')->withTag($tag);
+        return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
     }
 
     public function target($name)
