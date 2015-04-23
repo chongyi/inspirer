@@ -21,7 +21,7 @@
     <div class="c-container">
         <div class="c-header">
             <div class="c-logo">
-                <img src="/static/images/common/logo.png">
+                <a href="/" title="灵感 - 来自生活的馈赠"><img src="/static/images/common/logo.png"></a>
             </div>
             <ul class="nav nav-tabs">
                 @foreach($navs as $nav)

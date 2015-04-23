@@ -69,7 +69,7 @@ p { line-height: 2em; }
 .c-container { position: relative; margin-left: 240px; border-left: solid 1px #355F7B; border-bottom: solid 1px #355F7B; background-color: rgb(38, 38, 38); }
 
 .c-header { border-bottom: solid 3px #2180C5; position: relative; }
-.c-header > .c-logo { position: absolute; margin-left: -240px; width: 240px; }
+.c-header > .c-logo { position: absolute; margin-left: -240px; width: 240px; z-index: 10; }
 
 .c-body {  }
 .c-body:after { clear: both; content: " "; display: block; }
