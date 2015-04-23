@@ -10,7 +10,7 @@
     font-style: normal;
 }
 
-body { background: #000; color: #DCE1E4; font-family: 'agency_fbregular', 'Microsoft Yahei', sans-serif; }
+body { background: #1e2020; color: #D1D1D1; font-family: 'agency_fbregular', 'Microsoft Yahei', sans-serif; }
 
 .jumbotron {
     padding: 30px;
@@ -66,7 +66,7 @@ p { line-height: 2em; }
 .label { font-weight: normal; }
 .label a { color: #fff; }
 
-.c-container { position: relative; margin-left: 240px; border-left: solid 1px #355F7B; border-bottom: solid 1px #355F7B; box-shadow: 0 0 12px 0 rgba(74, 138, 190, 0.46); background-color: #1D2227; }
+.c-container { position: relative; margin-left: 240px; border-left: solid 1px #355F7B; border-bottom: solid 1px #355F7B; background-color: rgb(38, 38, 38); }
 
 .c-header { border-bottom: solid 3px #2180C5; position: relative; }
 .c-header > .c-logo { position: absolute; margin-left: -240px; width: 240px; }
@@ -129,7 +129,7 @@ p { line-height: 2em; }
 .c-post-content img { max-width: 100%; }
 .c-post-content a { word-wrap: break-word; }
 .c-post-content code { word-wrap: break-word; }
-.c-post-content { color: #7F8A90; }
+.c-post-content { color: #D1D1D1; }
 .c-post-content blockquote { background: #35393C; font-size: 16px; border-left-color: #2180C5; }
 .c-post-content blockquote p { line-height: 2em; }
 .c-post-content h1, 
