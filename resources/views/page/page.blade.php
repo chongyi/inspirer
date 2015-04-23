@@ -5,12 +5,6 @@
 <meta name="description" content="{{ $article->description }}">
 <meta name="author" content="chongyi@xopns.com">
 @stop
-@section('head')
-<ol class="breadcrumb">
-    <li><a title="首页" href="/">首页</a></li>
-    <li class="active">{{ $article->title }}</li>
-</ol>
-@stop
 @section('body')
 <ol class="breadcrumb">
     <li><a title="首页" href="/">首页</a></li>

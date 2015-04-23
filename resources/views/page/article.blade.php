@@ -5,17 +5,15 @@
 <meta name="description" content="{{ $article->description }}">
 <meta name="author" content="chongyi@xopns.com">
 @stop
-@section('head')
-<ol class="breadcrumb">
+
+@section('body')
+
+<div class="c-main">
+    <ol class="breadcrumb">
     <li><a title="首页" href="/">首页</a></li>
     <li><a title="{{ $article->category->display_name }}" href="{{ url('category', $article->category_id) }}">{{ $article->category->display_name }}</a></li>
     <li class="active">{{ $article->title }}</li>
 </ol>
-@stop
-@section('body')
-
-<div class="c-main">
-    
     <div class="c-post-list">
         <article class="c-post-container">
             <div class="c-post-info">

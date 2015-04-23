@@ -5,9 +5,6 @@
 <meta name="description" content="{{ $category->description }}">
 <meta name="author" content="chongyi@xopns.com">
 @stop
-@section('head')
-
-@stop
 
 @section('body')
 <ol class="breadcrumb">
