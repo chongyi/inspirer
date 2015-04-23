@@ -6,14 +6,13 @@
 <meta name="author" content="chongyi@xopns.com">
 @stop
 @section('head')
-
-@stop
-
-@section('body')
 <ol class="breadcrumb">
     <li><a title="首页" href="/">首页</a></li>
     <li class="active">{{ $category->display_name }}</li>
 </ol>
+@stop
+
+@section('body')
     <div class="category-data">
         <div class="category-information">
             <h1>{{ $category->display_name }}</h1>
@@ -42,9 +41,7 @@
             @endforelse
         </ul>
 
-        <div  class="c-post-list-footer">
-            {!! $articles->render() !!}
-        </div>
+        {!! $articles->render() !!}
     </div>
 
 <div class="widget-container">
