@@ -42,6 +42,9 @@
             <li><a href="http://www.biner.me/">宾呐·之谜</a></li>
         </ul>
     </div>
+    <div id="scroll-top" style="display: none">
+        <a><i class="fa fa-arrow-up"></i></a>
+    </div>
 </body>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -57,6 +60,25 @@
 
         $('.content-container').each(function(index, val) {
              $(val).emoji();
+        });
+
+        $(window).scroll(function(event) {
+            if ($(this).scrollTop() > 70) {
+                $('#scroll-top').show();
+            } else {
+                $('#scroll-top').hide();
+            }
+
+            if ($(this).scrollTop() + $(window).height() >= $('body').height() - 150) {
+                $('#scroll-top').css('bottom', 150);
+            } else if ($('#scroll-top').css('bottom') != 10) {
+                $('#scroll-top').css('bottom', 10);
+            }
+        });
+
+        $('#scroll-top a').click(function(event) {
+            $('body').animate({scrollTop: 0}, 1000);
+            return false;
         });
     });
     

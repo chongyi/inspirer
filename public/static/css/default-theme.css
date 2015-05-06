@@ -174,3 +174,6 @@ p { line-height: 2em; }
     .category-view-widget > ul { margin-top: 10px; }
     .category-view-widget > ul > li { margin-top: 5px; display: inline; margin-right: 15px; }
 }
+
+#scroll-top { position: fixed; right: 0; bottom: 10px; }
+#scroll-top a { padding: 10px; cursor: pointer; }
