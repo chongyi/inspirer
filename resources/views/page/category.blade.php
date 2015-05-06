@@ -29,7 +29,7 @@
                     @if(count($article->tags))
                     <li><i class="fa fa-tags"></i>
                         @foreach($article->tags as $tag)
-                        <span class="label label-default"><a href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }}</a></span>
+                        <span class="label label-default"><a href="@if(!empty($tag->name)){{ url('tag', $tag->name) }}@else{{ url('tag', $tag->id) }}@endif">{{ $tag->display_name }}</a></span>
                         @endforeach
                     </li>
                     @endif

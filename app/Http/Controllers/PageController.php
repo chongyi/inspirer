@@ -45,15 +45,36 @@ class PageController extends CommonController {
         return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
     }
 
-    public function target($name)
+    public function target($first, $second = null)
     {
-        if ($article = Article::where('name', '=', $name)->first()) {
-            if ($article->category_id == 0) {
-                return view('page.page')->withArticle($article);
+        if (is_null($second)) {
+            if ($article = Article::where('name', '=', $first)->first()) {
+                if ($article->category_id == 0) {
+                    return view('page.page')->withArticle($article);
+                }
+                return view('page.article')->withArticle($article);
+            } elseif ($category = Category::where('name', '=', $first)->first()) {
+                return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
+            } elseif ($tag = Tag::where('name', '=', $first)->first()) {
+                return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
             }
-            return view('page.article')->withArticle($article);
-        } elseif ($category = Category::where('name', '=', $name)->first()) {
-            return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
+        } else {
+            switch ($first) {
+                case 'article':
+                    $article = Article::where('name', '=', $second)->firstOrFail();
+                    return view('page.article')->withArticle($article);
+                    break;
+                case 'category':
+                case 'cat':
+                case 'c':
+                    $category = Category::where('name', '=', $second)->firstOrFail();
+                    return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
+                    break;
+                case 'tag':
+                case 't':
+                    $tag = Tag::where('name', '=', $second)->firstOrFail();
+                    return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
+            }
         }
 
         abort(404);

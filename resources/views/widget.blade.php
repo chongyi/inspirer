@@ -3,7 +3,7 @@
         <h1>分类</h1>
         <ul>
             @forelse($categories as $category)
-            <li><a title="{{ $category->display_name }}" href="@if(!empty($category->name)){{ url($category->name) }}@else{{ url('category', $category->id) }}@endif">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
+            <li><a title="{{ $category->display_name }}" href="@if(!empty($category->name)){{ url('category', $category->name) }}@else{{ url('category', $category->id) }}@endif">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
             @empty
             @endforelse
         </ul>
@@ -12,7 +12,7 @@
         <h1>标签</h1>
         <ul>
             @forelse($tags as $tag)
-            <li><a title="{{ $tag->display_name }}" href="@if(!empty($tag->name)){{ url($tag->name) }}@else{{ url('tag', $tag->id) }}@endif">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
+            <li><a title="{{ $tag->display_name }}" href="@if(!empty($tag->name)){{ url('tag', $tag->name) }}@else{{ url('tag', $tag->id) }}@endif">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
             @empty
             @endforelse
         </ul>

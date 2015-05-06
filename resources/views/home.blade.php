@@ -13,12 +13,12 @@
                 <ul class="c-post-meta">
                     <li><i class="fa fa-calendar"></i>{{ date('Y-m-d', strtotime($article->created_at)) }}</li>
                     <li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
-                    <li><i class="fa fa-inbox"></i><a title="{{ $article->category->display_name }}" href="{{ url('category', $article->category_id) }}">{{ $article->category->display_name }}</a></li>
+                    <li><i class="fa fa-inbox"></i><a title="{{ $article->category->display_name }}" href="@if(!empty($article->category->name)){{ url('category', $article->category->name) }}@else{{ url('category', $article->category->id) }}@endif">{{ $article->category->display_name }}</a></li>
                     @if($article->sort > 0)<li><i class="fa fa-arrow-up"></i>TOP</li>@endif
                     @if(count($article->tags))
                     <li><i class="fa fa-tags"></i>
                         @foreach($article->tags as $tag)
-                        <span class="label label-default"><a href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }}</a></span>
+                        <span class="label label-default"><a href="@if(!empty($tag->name)){{ url('tag', $tag->name) }}@else{{ url('tag', $tag->id) }}@endif">{{ $tag->display_name }}</a></span>
                         @endforeach
                     </li>
                     @endif
@@ -30,7 +30,7 @@
                     {!! \App\Inspirer\ArticleProcess::getSummary($article->content, $parse) !!}
 
                     <div class="post-control">
-                        <a title="{{ $article->title }}" href="{{ url('article', $article->id) }}#page-break-anchor" class="btn btn-primary">Read more</a>
+                        <a title="{{ $article->title }}" href="@if(!empty($article->name)){{ url($article->name) }}@else{{ url('article', $article->id) }}@endif#page-break-anchor" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
             </div>

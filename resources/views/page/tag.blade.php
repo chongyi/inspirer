@@ -25,11 +25,11 @@
                 <ul class="article-information">
                     <li><i class="fa fa-calendar"></i>{{ date('Y-m-d', strtotime($article->created_at)) }}</li>
                     <li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
-                    <li><i class="fa fa-inbox"></i>{{ $article->category->display_name }}</li>
+                    <li><i class="fa fa-inbox"></i><a title="{{ $article->category->display_name }}" href="@if(!empty($article->category->name)){{ url('category', $article->category->name) }}@else{{ url('category', $article->category->id) }}@endif">{{ $article->category->display_name }}</a></li>
                     @if(count($article->tags))
                     <li><i class="fa fa-tags"></i>
                         @foreach($article->tags as $tag)
-                        <span class="label label-default"><a href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }}</a></span>
+                        <span class="label label-default"><a href="@if(!empty($tag->name)){{ url('tag', $tag->name) }}@else{{ url('tag', $tag->id) }}@endif">{{ $tag->display_name }}</a></span>
                         @endforeach
                     </li>
                     @endif
