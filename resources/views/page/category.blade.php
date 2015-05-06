@@ -21,7 +21,7 @@
         <ul class="list">
             @forelse($articles as $article)
             <li>
-                <a href="{{ url('article', $article->id) }}" title="{{ $article->title }}"><h1>{{ $article->title }}</h1></a>
+                <a href="@if(!empty($article->name)){{ url($article->name) }}@else{{ url('article', $article->id) }}@endif" title="{{ $article->title }}"><h1>{{ $article->title }}</h1></a>
                 <ul class="article-information">
                     <li><i class="fa fa-calendar"></i>{{ date('Y-m-d', strtotime($article->created_at)) }}</li>
                     <li><i class="fa fa-clock-o"></i>{{ date('H:i', strtotime($article->created_at)) }}</li>
@@ -44,24 +44,5 @@
         </div>
     </div>
 
-<div class="widget-container">
-    <div class="widget category-view-widget">
-        <h1>分类</h1>
-        <ul>
-            @forelse($categories as $category)
-            <li><a title="{{ $category->display_name }}" href="{{ url('category', $category->id) }}">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
-            @empty
-            @endforelse
-        </ul>
-    </div>
-    <div class="widget category-view-widget">
-        <h1>标签</h1>
-        <ul>
-            @forelse($tags as $tag)
-            <li><a title="{{ $tag->display_name }}" href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
-            @empty
-            @endforelse
-        </ul>
-    </div>
-</div>
+@include('widget')
 @stop

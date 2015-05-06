@@ -32,7 +32,7 @@
                 </ul>
             </div>
             <div class="c-post">
-                <h1 class="c-post-title"><a title="{{ $article->title }}" href="{{ url('article', $article->id) }}">{{ $article->title }}</a></h1>
+                <h1 class="c-post-title"><a title="{{ $article->title }}" href="@if(!empty($article->name)){{ url($article->name) }}@else{{ url('article', $article->id) }}@endif">{{ $article->title }}</a></h1>
                 <div class="c-post-content">
                     {!! \App\Inspirer\ArticleProcess::getContent($article->content) !!}
                 </div>
@@ -57,24 +57,5 @@
         <!-- 多说公共JS代码 end -->
     </div>
 </div>
-<div class="widget-container">
-    <div class="widget category-view-widget">
-        <h1>分类</h1>
-        <ul>
-            @forelse($categories as $category)
-            <li><a title="{{ $category->display_name }}" href="{{ url('category', $category->id) }}">{{ $category->display_name }} ({{ $category->articles->count() }})</a></li>
-            @empty
-            @endforelse
-        </ul>
-    </div>
-    <div class="widget category-view-widget">
-        <h1>标签</h1>
-        <ul>
-            @forelse($tags as $tag)
-            <li><a title="{{ $tag->display_name }}" href="{{ url('tag', $tag->id) }}">{{ $tag->display_name }} ({{ $tag->articles->count() }})</a></li>
-            @empty
-            @endforelse
-        </ul>
-    </div>
-</div>
+@include('widget')
 @stop
