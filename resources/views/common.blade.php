@@ -40,6 +40,7 @@
         <ul class="link">
             <li>友情链接</li>
             <li><a href="http://www.biner.me/">宾呐·之谜</a></li>
+            <li><a href="http://www.nowamagic.net">简明现代魔法</a></li>
         </ul>
     </div>
     <div id="scroll-top" style="display: none">
