@@ -59,7 +59,7 @@
 
         prettyPrint();
 
-        $('.content-container').each(function(index, val) {
+        $('.c-post-content').each(function(index, val) {
              $(val).emoji();
         });
 
