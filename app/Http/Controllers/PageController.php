@@ -13,6 +13,7 @@ class PageController extends CommonController {
         $article = Article::findOrFail($id);
 
         if ($article->category_id == 0) {
+            
             return redirect("page/{$article->category_id}");
         }
 
@@ -23,24 +24,21 @@ class PageController extends CommonController {
 
     public function category($id)
     {
-        $category = Category::with(array('articles' => function($query)
-        {
-            $query->orderBy('sort', 'desc')
+        $category = Category::with('articles')->where('id', '=', $id)->firstOrFail();
+
+        return view('page.category')
+            ->withCategory($category)
+            ->withArticles(
+                $category->articles()->orderBy('sort', 'desc')
                 ->orderBy('created_at', 'desc')
-                ->orderBy('id', 'desc');
-
-        }))->where('id', '=', $id)->firstOrFail();
-
-        return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
+                ->orderBy('id', 'desc')
+                ->paginate(10)
+                );
     }
 
     public function tag($id)
     {
-        $tag = Tag::with(array('articles' => function($query) {
-            $query->orderBy('sort', 'desc')
-                ->orderBy('created_at', 'desc')
-                ->orderBy('id', 'desc');
-        }))->where('id', '=', $id)->firstOrFail();
+        $tag = Tag::with('articles')->where('id', '=', $id)->firstOrFail();
 
         return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
     }
@@ -48,32 +46,80 @@ class PageController extends CommonController {
     public function target($first, $second = null)
     {
         if (is_null($second)) {
+
             if ($article = Article::where('name', '=', $first)->first()) {
+
                 if ($article->category_id == 0) {
+
                     return view('page.page')->withArticle($article);
                 }
+
                 return view('page.article')->withArticle($article);
-            } elseif ($category = Category::where('name', '=', $first)->first()) {
-                return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
+
+            } elseif ($category = Category::with('articles')->where('name', '=', $first)->first()) {
+
+                return view('page.category')
+                    ->withCategory($category)
+                    ->withArticles(
+                        $category->articles()->orderBy('sort', 'desc')
+                        ->orderBy('created_at', 'desc')
+                        ->orderBy('id', 'desc')
+                        ->paginate(10)
+                        );
+
             } elseif ($tag = Tag::where('name', '=', $first)->first()) {
-                return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
+
+                return view('page.tag')
+                    ->withTag($tag)
+                    ->withArticles(
+                        $tag->articles()->orderBy('sort', 'desc')
+                        ->orderBy('created_at', 'desc')
+                        ->orderBy('id', 'desc')
+                        ->paginate(10)
+                        );
+
             }
         } else {
+
             switch ($first) {
                 case 'article':
+
                     $article = Article::where('name', '=', $second)->firstOrFail();
+
                     return view('page.article')->withArticle($article);
+
                     break;
+
                 case 'category':
                 case 'cat':
                 case 'c':
-                    $category = Category::where('name', '=', $second)->firstOrFail();
-                    return view('page.category')->withCategory($category)->withArticles($category->articles()->paginate(10));
+
+                    $category = Category::with('articles')->where('name', '=', $second)->firstOrFail();
+
+                    return view('page.category')
+                        ->withCategory($category)
+                        ->withArticles(
+                            $category->articles()->orderBy('sort', 'desc')
+                            ->orderBy('created_at', 'desc')
+                            ->orderBy('id', 'desc')
+                            ->paginate(10)
+                            );
+
                     break;
+
                 case 'tag':
                 case 't':
-                    $tag = Tag::where('name', '=', $second)->firstOrFail();
-                    return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
+
+                    $tag = Tag::with('articles')->where('name', '=', $second)->firstOrFail();
+
+                    return view('page.tag')
+                        ->withTag($tag)
+                        ->withArticles(
+                            $tag->articles()->orderBy('sort', 'desc')
+                            ->orderBy('created_at', 'desc')
+                            ->orderBy('id', 'desc')
+                            ->paginate(10)
+                            );
             }
         }
 
