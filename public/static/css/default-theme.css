@@ -139,6 +139,8 @@ p { line-height: 2em; }
 .c-post-content h5, 
 .c-post-content h6 { border-bottom: solid 1px #366281; padding-bottom: 8px; }
 
+.c-post-footer { padding: 0 20px; margin-top: 55px; }
+
 .widget-container { position: relative; float: left; width: 300px; margin-left: -300px; border-left: dotted 1px #2180C5; box-sizing: border-box; }
 .widget > h1 { font-size: 200%; margin: 0; padding: 10px; background: #48525A; border-left: solid 5px #2180C5; }
 
@@ -170,6 +172,7 @@ p { line-height: 2em; }
     .widget-container { float: none; width: auto; margin: auto; border: none; }
     .c-post-container > .c-post-info { border-right: none; margin-right: 0; }
     .c-post-container > .c-post { border-right: none; margin: 0; }
+    .c-post-footer { margin-top: 35px; }
     .c-post-list-footer { border-right: none; margin-right: 0; }
     .category-view-widget > ul { margin-top: 10px; }
     .category-view-widget > ul > li { margin-top: 5px; display: inline; margin-right: 15px; }

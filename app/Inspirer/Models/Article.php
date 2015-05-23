@@ -16,4 +16,14 @@ class Article extends Model {
         return $this->belongsToMany('App\Inspirer\Models\Tag');
     }
 
+    public function next()
+    {
+        return $this->where('category_id', '<>', 0)->where('id', '>', $this->id)->first();
+    }
+
+    public function prev()
+    {
+        return $this->where('category_id', '<>', 0)->where('id', '<', $this->id)->orderBy('id', 'desc')->first();
+    }
+
 }

@@ -36,6 +36,12 @@
                 <div class="c-post-content">
                     {!! \App\Inspirer\ArticleProcess::getContent($article->content) !!}
                 </div>
+                <div class="c-post-footer">
+                    <nav class="c-post-navigation">
+                        <div>上一篇：@if($article->prev() != null) <a title="{{ $article->prev()->title }}" href="@if(!empty($article->prev()->name)){{ url($article->prev()->name) }}@else{{ url('article', $article->prev()->id) }}@endif">{{ $article->prev()->title }}</a> @else 没有咯 @endif</div>
+                        <div>下一篇：@if($article->next() != null) <a title="{{ $article->next()->title }}" href="@if(!empty($article->next()->name)){{ url($article->next()->name) }}@else{{ url('article', $article->next()->id) }}@endif">{{ $article->next()->title }}</a> @else 没有咯 @endif</div>
+                    </nav>
+                </div>
             </div>
             
         </article>
