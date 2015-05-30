@@ -13,7 +13,7 @@
                     <thead>
                         <th width="50">ID</th>
                         <th width="220">标题</th>
-                        <th width="50">点击数</th>
+                        <th width="60">点击数</th>
                         <th width="85">分类</th>
                         <th>摘要</th>
                         <th width="160">创建时间</th>
