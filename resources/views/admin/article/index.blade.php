@@ -13,6 +13,7 @@
                     <thead>
                         <th width="50">ID</th>
                         <th width="220">标题</th>
+                        <th>点击数</th>
                         <th width="100">分类</th>
                         <th>摘要</th>
                         <th width="160">创建时间</th>
@@ -24,10 +25,11 @@
                         <tr>
                             <td>{{ $article->id }}</td>
                             <td>{{ $article->title }}</td>
+                            <td>{{ $article->views }}</td>
                             <td>@if(isset($article->category)){{ $article->category->display_name }}@else 独立页面 @endif</td>
-                            <td>{{ $article->description }}</td>
+                            <td>{{ mb_substr($article->description, 0, 60, 'utf8') }}</td>
                             <td>{{ $article->created_at }}</td>
-                            <td>{{ $article->updated_at }}</td>
+                            <td>{{ $article->modified_at }}</td>
                             <td>
                                 <a href="{{ url("admin/article/{$article->id}") }}" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> 查看</a>
                                 <a href="{{ url("admin/article/{$article->id}/edit") }}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> 编辑</a>

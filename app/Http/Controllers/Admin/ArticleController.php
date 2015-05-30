@@ -73,7 +73,9 @@ class ArticleController extends Controller {
 			? $request->input('description') : strip_tags((new Parsedown)->text($description));
 
 		$article = Article::create($insert);
-
+		$article->modified_at = date("Y-m-d H:i:s", time());
+		$article->save();
+		
 		$article->tags()->sync($request->input('tag', []));
 
 		return redirect('admin/article');
@@ -153,6 +155,7 @@ class ArticleController extends Controller {
 		if (isset($name)) {
 			$article->name = $name;
 		}
+		$article->modified_at = date("Y-m-d H:i:s", time());
 		$article->save();
 
 		$article->tags()->sync($request->input('tag', []));
