@@ -14,7 +14,7 @@
     <script type="text/javascript" src="/static/js/bootstrap-submenu.min.js"></script>
     
     <script type="text/javascript" src="/static/js/jquery.emoji.js"></script>
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/prettify/r298/prettify.min.js"></script>
+    <script type="text/javascript" src="/static/js/prettify.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/prettify-theme.css">
 </head>
 <body>
