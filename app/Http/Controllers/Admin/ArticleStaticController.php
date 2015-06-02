@@ -74,12 +74,8 @@ class ArticleStaticController extends Controller {
             } else {
                 $data = view('page.article')->withArticle($article)->render();
             }
-
-            if (!is_dir('html/' . $article->name)) {
-                mkdir('html/' . $article->name);
-            }
-
-            file_put_contents('html/' . $article->name . '/index.html', $data);
+            
+            file_put_contents('html/' . $article->name . '.html', $data);
         }
 
         return redirect('admin/article');
