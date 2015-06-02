@@ -60,6 +60,8 @@ class ArticleStaticController extends Controller {
         view()->share('categories', Category::all());
         view()->share('tags', Tag::all());
         view()->share('options', $options);
+        view()->share('staticMode', true);
+        view()->share('staticCreateTime', date('Y/m/d H:i:s', time()));
 
         foreach ($articles as $article) {
             if (empty($article->name)) {

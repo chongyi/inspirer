@@ -34,6 +34,7 @@
         </div>
     </div>
     <div class="c-footer">
+        @if(isset($staticMode))<p>This is a static page. Created at {{ $staticCreateTime }}</p>@endif
         <p>Copyright © 2012 XOPNS·Studo.All rights reserved.</p>
         <p>Powered by XOPNS·Database - WebsiteDeveloper.</p>
         <p>{!! isset($options['statistics']) ? $options['statistics'] : '' !!}</p>
