@@ -44,6 +44,7 @@
             
             <div class="panel-footer">
                 <a class="btn btn-primary" href="{{ url('admin/article/create') }}"><i class="fa fa-plus"></i> 添加文章</a>
+                <a class="btn btn-default" href="{{ url('admin/static/create') }}"><i class="fa fa-paperclip"></i> 生成静态页面</a>
             </div>
         </div>
         {!! $articles->render() !!}
