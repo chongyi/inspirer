@@ -64,17 +64,18 @@ class ArticleStaticController extends Controller {
         view()->share('staticCreateTime', date('Y/m/d H:i:s', time()));
 
         foreach ($articles as $article) {
+
             if (empty($article->name)) {
                 continue;
             }
-
+            
             if ($article->category_id == 0) {
 
                 $data = view('page.page')->withArticle($article)->render();
             } else {
                 $data = view('page.article')->withArticle($article)->render();
             }
-            
+
             file_put_contents('html/' . $article->name . '.html', $data);
         }
 
