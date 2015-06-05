@@ -38,11 +38,19 @@
         <p>Copyright © 2012 XOPNS·Studo.All rights reserved.</p>
         <p>Powered by XOPNS·Database - WebsiteDeveloper.</p>
         <p>{!! isset($options['statistics']) ? $options['statistics'] : '' !!}</p>
-        <ul class="link">
-            <li>友情链接</li>
-            <li><a href="http://www.biner.me/">宾呐·之谜</a></li>
-            <li><a href="http://www.nowamagic.net">简明现代魔法</a></li>
-        </ul>
+        <div class="site-information">
+            <div class="left">
+                <a href="http://www.miitbeian.gov.cn/" title="工信部备案管理系统">渝ICP备15005301号</a>
+            </div>
+            <div>
+                友情链接
+                <ul>
+                    <li><a href="http://www.biner.me/">宾呐·之谜</a></li>
+                    <li><a href="http://www.nowamagic.net">简明现代魔法</a></li>
+                </ul>
+            </div>
+            
+        </div>
     </div>
     <div id="scroll-top" style="display: none">
         <a><i class="fa fa-arrow-up"></i></a>

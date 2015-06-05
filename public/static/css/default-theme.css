@@ -12,6 +12,9 @@
 
 body { background: #1e2020; color: #D1D1D1; font-family: 'agency_fbregular', 'Microsoft Yahei', sans-serif; }
 
+a { transition: all 0.20s ease-out; }
+a:hover { color: #EEFBFF; text-decoration: none; text-shadow: 0 0 10px #3792E1; }
+
 .jumbotron {
     padding: 30px;
     margin-bottom: 30px;
@@ -123,8 +126,12 @@ p { line-height: 2em; }
 
 .c-footer { position: relative; box-sizing: border-box; padding: 5px 15px 0 15px; margin-top: 75px; text-align: right; }
 .c-footer p { margin: 0; }
-.c-footer ul.link { list-style: none; padding: 5px 15px; border-top: solid 1px #0C436B; background: rgba(0, 45, 77, 0.5); margin: 0 -15px; box-sizing: border-box; }
-.c-footer ul.link > li { padding: 0; display: inline; }
+.c-footer > .site-information { list-style: none; padding: 5px 15px; border-top: solid 1px #0C436B; background: rgba(0, 45, 77, 0.5); margin: 0 -15px; box-sizing: border-box; }
+.c-footer > .site-information:after { content: " "; display: block; clear: both; }
+.c-footer > .site-information > div { padding: 0; display: inline; }
+.c-footer > .site-information > div.left { float: left; }
+.c-footer > .site-information > div > ul { list-style: none; display: inline-block; padding: 0; margin: 0; }
+.c-footer > .site-information > div > ul > li { display: inline; }
 
 .c-post-content img { max-width: 100%; }
 .c-post-content a { word-wrap: break-word; }
@@ -150,7 +157,7 @@ p { line-height: 2em; }
 .pagination>li>a, .pagination>li>span { background: none; border-color: #2180C5; }
 .pagination> .disabled >a, .pagination> .disabled >span { background: #2C3740;border-color: #2180C5; }
 .pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus { background: none; border-color: #2180C5; }
-.pagination>li>span:hover, .pagination>li>span:focus, .pagination>li>a:hover, .pagination>li>a:focus { background: rgba(0, 45, 77, 0.5); border-color: #2180C5; }
+.pagination>li>span:hover, .pagination>li>span:focus, .pagination>li>a:hover, .pagination>li>a:focus { background: rgba(0, 45, 77, 0.5); border-color: #2180C5; color: #EEFBFF; text-shadow: 0 0 10px #3792E1; }
 
 @media screen and (max-width: 1196px) {
     .category-data > .category-information { position: relative; margin-left: 0; width: auto; margin-right: 0; margin-top: 0px; padding: 0 20px; border-bottom: dashed 2px #555; }
