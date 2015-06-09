@@ -68,7 +68,7 @@ class ArticleStaticController extends Controller {
             if (empty($article->name)) {
                 continue;
             }
-            
+
             if ($article->category_id == 0) {
 
                 $data = view('page.page')->withArticle($article)->render();

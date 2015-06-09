@@ -24,6 +24,7 @@ class CreateArticlesTable extends Migration {
 			$table->mediumText('content');
 			$table->tinyInteger('sort')->default(0);
 			$table->integer('views')->default(0);
+            $table->timestamp('modified_at');
 			$table->engine = 'innodb';
 		});
 	}
