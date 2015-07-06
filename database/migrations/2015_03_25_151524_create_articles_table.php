@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration {
 			$table->string('name')->nullable();
 			$table->integer('category_id');
 			$table->string('keywords');
+            $table->boolean('display');
 			$table->text('description');
 			$table->mediumText('content');
 			$table->tinyInteger('sort')->default(0);

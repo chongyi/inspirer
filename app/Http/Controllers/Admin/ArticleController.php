@@ -159,6 +159,7 @@ class ArticleController extends Controller
         $article->content     = $content;
         $article->description = $description;
         $article->sort        = $sort;
+        $article->display     = $display;
         if (isset($name)) {
             $article->name = $name;
         }
