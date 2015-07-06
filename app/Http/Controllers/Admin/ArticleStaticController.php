@@ -9,14 +9,15 @@ use App\Inspirer\Models\Tag;
 use App\Inspirer\Models\Category;
 use Illuminate\Http\Request;
 
-class ArticleStaticController extends Controller {
+class ArticleStaticController extends Controller
+{
 
     public function __construct()
     {
         view()->share('active', 'article');
     }
 
-	public function create()
+    public function create()
     {
         return view('admin/article/static');
     }
@@ -31,13 +32,13 @@ class ArticleStaticController extends Controller {
 
         $navs = Nav::orderBy('sort', 'desc')->get();
 
-        $function = function($closure, $navs, $pid = 0) {
+        $function = function ($closure, $navs, $pid = 0) {
             $return = null;
 
             foreach ($navs as $nav) {
 
                 if ($nav->parent_id == $pid) {
-                    if (null != $children = call_user_func($closure, $closure, $navs, $nav->id) ) {
+                    if (null != $children = call_user_func($closure, $closure, $navs, $nav->id)) {
                         $return[] = [$nav, $children];
                     } else {
                         $return[] = $nav;

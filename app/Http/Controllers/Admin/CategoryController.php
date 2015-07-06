@@ -7,129 +7,134 @@ use Illuminate\Http\Request;
 use Validator;
 use DB;
 
-class CategoryController extends Controller {
+class CategoryController extends Controller
+{
 
-	public function __construct()
-	{
-		view()->share('active', 'category');
-	}
+    public function __construct()
+    {
+        view()->share('active', 'category');
+    }
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$categories = Category::all();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $categories = Category::all();
 
-		return view('admin.category.index', ['categories' => $categories]);
-	}
+        return view('admin.category.index', ['categories' => $categories]);
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view('admin.category.edit');
-	}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('admin.category.edit');
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(Request $request)
-	{
-		$check = Validator::make($request->all(), [
-			'name' => ['required', 'enstring'],
-			'display_name' => ['required'],
-			]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $check = Validator::make($request->all(), [
+            'name'         => ['required', 'enstring'],
+            'display_name' => ['required'],
+        ]);
 
-		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors())->withInput();
-		}
+        if ($check->fails()) {
+            return redirect()->back()->withErrors($check->errors())->withInput();
+        }
 
-		Category::create($request->only('name', 'display_name', 'description'));
+        Category::create($request->only('name', 'display_name', 'description'));
 
-		return redirect('admin/category');
-	}
+        return redirect('admin/category');
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id, Request $request)
-	{
-		$category = Category::findOrFail($id);
+    }
 
-		return view('admin.category.edit', ['category' => $category]);
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id, Request $request)
+    {
+        $category = Category::findOrFail($id);
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id, Request $request)
-	{
-		$check = Validator::make($request->all(), [
-			'name' => ['required', 'enstring'],
-			'display_name' => ['required'],
-			]);
+        return view('admin.category.edit', ['category' => $category]);
+    }
 
-		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors())->withInput();
-		}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function update($id, Request $request)
+    {
+        $check = Validator::make($request->all(), [
+            'name'         => ['required', 'enstring'],
+            'display_name' => ['required'],
+        ]);
 
-		$category = Category::findOrFail($id);
+        if ($check->fails()) {
+            return redirect()->back()->withErrors($check->errors())->withInput();
+        }
 
-		foreach ($request->only('name', 'display_name', 'description') as $key => $value) {
-			$category->{$key} = $value;
-		}
+        $category = Category::findOrFail($id);
 
-		$category->save();
+        foreach ($request->only('name', 'display_name', 'description') as $key => $value) {
+            $category->{$key} = $value;
+        }
 
-		return redirect()->back();
-	}
+        $category->save();
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		// traverse and delete
-		Category::findOrFail($id)->delete();
+        return redirect()->back();
+    }
 
-		return redirect()->back();
-	}
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        // traverse and delete
+        Category::findOrFail($id)->delete();
 
-	protected function traverseToDelete($parent)
-	{
-		$t = Category::where('parent_id', '=', $parent)->get();
-		foreach ($t as $category) {
-			$this->traverseToDelete($category->id);
-			$category->delete();
-		}
-	}
+        return redirect()->back();
+    }
+
+    protected function traverseToDelete($parent)
+    {
+        $t = Category::where('parent_id', '=', $parent)->get();
+        foreach ($t as $category) {
+            $this->traverseToDelete($category->id);
+            $category->delete();
+        }
+    }
 
 }

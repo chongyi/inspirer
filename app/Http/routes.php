@@ -28,7 +28,7 @@ Route::get('admin/login', 'Admin\MainController@login');
 Route::post('admin/login', 'Admin\MainController@loginProgress');
 Route::get('admin/logout', 'Admin\MainController@logout');
 
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'MainController@index');
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController');
@@ -41,5 +41,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
 Route::get('article/{id}', 'PageController@article');
 Route::get('category/{id}', 'PageController@category');
 Route::get('tag/{id}', 'PageController@tag');
-Route::get('{first}/{second?}', 'PageController@target')->where(['first' => '[-_A-Za-z0-9]+', 'second' => '[-_A-Za-z0-9]+']);
+Route::get('{first}/{second?}', 'PageController@target')->where(['first'  => '[-_A-Za-z0-9]+',
+                                                                 'second' => '[-_A-Za-z0-9]+'
+]);
 Route::get('about', 'PageController@about');

@@ -2,11 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model {
+class Tag extends Model
+{
 
     protected $fillable = ['name', 'display_name', 'description'];
 
-	public function articles()
+    public function articles()
     {
         return $this->belongsToMany('App\Inspirer\Models\Article');
     }

@@ -2,11 +2,12 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model {
+class Article extends Model
+{
 
     protected $fillable = ['title', 'category_id', 'keywords', 'content', 'description', 'name', 'display'];
 
-	public function category()
+    public function category()
     {
         return $this->belongsTo('App\Inspirer\Models\Category');
     }

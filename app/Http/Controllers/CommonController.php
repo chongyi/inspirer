@@ -8,19 +8,20 @@ use Illuminate\Http\Request;
 use App\Inspirer\Models\Nav;
 use App\Inspirer\Models\Option;
 
-class CommonController extends Controller {
+class CommonController extends Controller
+{
 
-	public function __construct()
+    public function __construct()
     {
         $navs = Nav::orderBy('sort', 'desc')->get();
 
-        $function = function($closure, $navs, $pid = 0) {
+        $function = function ($closure, $navs, $pid = 0) {
             $return = null;
 
             foreach ($navs as $nav) {
 
                 if ($nav->parent_id == $pid) {
-                    if (null != $children = call_user_func($closure, $closure, $navs, $nav->id) ) {
+                    if (null != $children = call_user_func($closure, $closure, $navs, $nav->id)) {
                         $return[] = [$nav, $children];
                     } else {
                         $return[] = $nav;
@@ -32,7 +33,7 @@ class CommonController extends Controller {
         };
 
         $d = Option::all();
-        
+
         $options = [];
 
         foreach ($d as $option) {

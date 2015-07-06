@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 use App\Inspirer\Models\Article;
 
 
-class IndexController extends CommonController {
+class IndexController extends CommonController
+{
 
-	public function index(Request $request)
+    public function index(Request $request)
     {
         $articles = Article::where('category_id', '!=', 0)
+            ->where('display', '=', true)
             ->orderBy('sort', 'desc')
             ->orderBy('created_at', 'desc')
             ->orderBy('id', 'desc')

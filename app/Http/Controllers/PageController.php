@@ -6,9 +6,10 @@ use App\Inspirer\Models\Category;
 use App\Inspirer\Models\Tag;
 use Illuminate\Http\Request;
 
-class PageController extends CommonController {
+class PageController extends CommonController
+{
 
-	public function article($id)
+    public function article($id)
     {
         $article = Article::where('display', '=', true)->firstOrFail($id);
 
@@ -30,10 +31,10 @@ class PageController extends CommonController {
             ->withCategory($category)
             ->withArticles(
                 $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                ->orderBy('created_at', 'desc')
-                ->orderBy('id', 'desc')
-                ->paginate(10)
-                );
+                    ->orderBy('created_at', 'desc')
+                    ->orderBy('id', 'desc')
+                    ->paginate(10)
+            );
     }
 
     public function tag($id)
@@ -63,10 +64,10 @@ class PageController extends CommonController {
                     ->withCategory($category)
                     ->withArticles(
                         $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                        ->orderBy('created_at', 'desc')
-                        ->orderBy('id', 'desc')
-                        ->paginate(10)
-                        );
+                            ->orderBy('created_at', 'desc')
+                            ->orderBy('id', 'desc')
+                            ->paginate(10)
+                    );
 
             } elseif ($tag = Tag::where('name', '=', $first)->first()) {
 
@@ -74,10 +75,10 @@ class PageController extends CommonController {
                     ->withTag($tag)
                     ->withArticles(
                         $tag->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                        ->orderBy('created_at', 'desc')
-                        ->orderBy('id', 'desc')
-                        ->paginate(10)
-                        );
+                            ->orderBy('created_at', 'desc')
+                            ->orderBy('id', 'desc')
+                            ->paginate(10)
+                    );
 
             }
         } else {
@@ -101,10 +102,10 @@ class PageController extends CommonController {
                         ->withCategory($category)
                         ->withArticles(
                             $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                            ->orderBy('created_at', 'desc')
-                            ->orderBy('id', 'desc')
-                            ->paginate(10)
-                            );
+                                ->orderBy('created_at', 'desc')
+                                ->orderBy('id', 'desc')
+                                ->paginate(10)
+                        );
 
                     break;
 
@@ -117,10 +118,10 @@ class PageController extends CommonController {
                         ->withTag($tag)
                         ->withArticles(
                             $tag->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                            ->orderBy('created_at', 'desc')
-                            ->orderBy('id', 'desc')
-                            ->paginate(10)
-                            );
+                                ->orderBy('created_at', 'desc')
+                                ->orderBy('id', 'desc')
+                                ->paginate(10)
+                        );
             }
         }
 
