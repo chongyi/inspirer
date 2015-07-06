@@ -10,170 +10,178 @@ use Illuminate\Http\Request;
 use Validator;
 use Parsedown;
 
-class ArticleController extends Controller {	
+class ArticleController extends Controller
+{
 
-	public function __construct()
-	{
-		view()->share('active', 'article');
-	}
+    public function __construct()
+    {
+        view()->share('active', 'article');
+    }
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$articles = Article::with('category')
-			->orderBy('sort', 'desc')
-			->orderBy('created_at', 'desc')
-			->paginate(8);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $articles = Article::with('category')
+            ->orderBy('sort', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->paginate(8);
 
-		return view('admin.article.index', ['articles' => $articles]);
-	}
+        return view('admin.article.index', ['articles' => $articles]);
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		$categories = Category::all();
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $categories = Category::all();
 
-		$tags = Tag::all();
+        $tags = Tag::all();
 
-		return view('admin.article.edit', ['categories' => $categories, 'tags' => $tags]);
-	}
+        return view('admin.article.edit', ['categories' => $categories, 'tags' => $tags]);
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store(Request $request)
-	{
-		$check = Validator::make($request->all(), [
-			'title' => ['required', 'min:1', 'max: 255'],
-			'category_id' => ['required', 'numeric'],
-			'sort' => ['numeric'],
-			'name' => ['alpha_dash'],
-			'tag' => ['array']
-			]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(Request $request)
+    {
+        $check = Validator::make($request->all(), [
+            'title'       => ['required', 'min:1', 'max: 255'],
+            'category_id' => ['required', 'numeric'],
+            'sort'        => ['numeric'],
+            'name'        => ['alpha_dash'],
+            'tag'         => ['array'],
+            'display'     => ['boolean']
+        ]);
 
-		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors())->withInput();;
-		}
+        if ($check->fails()) {
+            return redirect()->back()->withErrors($check->errors())->withInput();;
+        }
 
-		extract(ArticleProcess::convertArticle($request->input('content')));
+        extract(ArticleProcess::convertArticle($request->input('content')));
 
-		$insert = $request->only('title', 'category_id', 'keywords', 'sort', 'name');
-		$insert['content'] = $content;
-		$insert['description'] = $request->has('description') 
-			? $request->input('description') : strip_tags((new Parsedown)->text($description));
+        $insert                = $request->only('title', 'category_id', 'keywords', 'sort', 'name', 'display');
+        $insert['content']     = $content;
+        $insert['description'] = $request->has('description')
+            ? $request->input('description') : strip_tags((new Parsedown)->text($description));
 
-		$article = Article::create($insert);
-		$article->modified_at = date("Y-m-d H:i:s", time());
-		$article->save();
-		
-		$article->tags()->sync($request->input('tag', []));
+        $article              = Article::create($insert);
+        $article->modified_at = date("Y-m-d H:i:s", time());
+        $article->save();
 
-		return redirect('admin/article');
+        $article->tags()->sync($request->input('tag', []));
 
-	}
+        return redirect('admin/article');
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$article = Article::findOrFail($id);
+    }
 
-		return view('admin.article.show', ['article' => $article]);
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $article = Article::findOrFail($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id, Request $request)
-	{
-		$article = Article::findOrFail($id);
+        return view('admin.article.show', ['article' => $article]);
+    }
 
-		$categories = Category::all();
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id, Request $request)
+    {
+        $article = Article::findOrFail($id);
 
-		$tags = Tag::all();
+        $categories = Category::all();
 
-		$tagSelect = [];
+        $tags = Tag::all();
 
-		foreach ($article->tags as $tag) {
-			$tagSelect[] = $tag->id;
-		}
+        $tagSelect = [];
 
-		return view('admin.article.edit', ['categories' => $categories, 'article' => $article, 'tags' => $tags, 'tagSelect' => $tagSelect]);
-	}
+        foreach ($article->tags as $tag) {
+            $tagSelect[] = $tag->id;
+        }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id, Request $request)
-	{
-		$check = Validator::make($request->all(), [
-			'title' => ['required', 'min:1', 'max: 255'],
-			'category_id' => ['required', 'numeric'],
-			'sort' => ['numeric'],
-			'name' => ['alpha_dash'],
-			'tag' => ['array']
-			]);
+        return view('admin.article.edit',
+            ['categories' => $categories, 'article' => $article, 'tags' => $tags, 'tagSelect' => $tagSelect]);
+    }
 
-		if ($check->fails()) {
-			return redirect()->back()->withErrors($check->errors())->withInput();;
-		}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function update($id, Request $request)
+    {
+        $check = Validator::make($request->all(), [
+            'title'       => ['required', 'min:1', 'max: 255'],
+            'category_id' => ['required', 'numeric'],
+            'sort'        => ['numeric'],
+            'name'        => ['alpha_dash'],
+            'tag'         => ['array'],
+            'display'     => ['boolean']
+        ]);
 
-		$article = Article::findOrFail($id);
+        if ($check->fails()) {
+            return redirect()->back()->withErrors($check->errors())->withInput();;
+        }
 
-		$insert = $request->only('title', 'category_id', 'keywords', 'sort', 'name');
-		$insert = array_merge($insert, ArticleProcess::convertArticle($request->input('content')));
-		$insert['description'] = $request->has('description') 
-			? $request->input('description') : strip_tags((new Parsedown)->text($insert['description']));
-		extract($insert);
+        $article = Article::findOrFail($id);
 
-		$article->title = $title;
-		$article->category_id = $category_id;
-		$article->keywords = $keywords;
-		$article->content = $content;
-		$article->description = $description;
-		$article->sort = $sort;
-		if (isset($name)) {
-			$article->name = $name;
-		}
-		$article->modified_at = date("Y-m-d H:i:s", time());
-		$article->save();
+        $insert                = $request->only('title', 'category_id', 'keywords', 'sort', 'name', 'display');
+        $insert                = array_merge($insert, ArticleProcess::convertArticle($request->input('content')));
+        $insert['description'] = $request->has('description')
+            ? $request->input('description') : strip_tags((new Parsedown)->text($insert['description']));
+        extract($insert);
 
-		$article->tags()->sync($request->input('tag', []));
+        $article->title       = $title;
+        $article->category_id = $category_id;
+        $article->keywords    = $keywords;
+        $article->content     = $content;
+        $article->description = $description;
+        $article->sort        = $sort;
+        if (isset($name)) {
+            $article->name = $name;
+        }
+        $article->modified_at = date("Y-m-d H:i:s", time());
+        $article->save();
 
-		return redirect()->back();
-	}
+        $article->tags()->sync($request->input('tag', []));
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		Article::findOrFail($id)->delete();
+        return redirect()->back();
+    }
 
-		return redirect('admin/article');
-	}
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        Article::findOrFail($id)->delete();
+
+        return redirect('admin/article');
+    }
 
 }

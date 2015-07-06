@@ -98,6 +98,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>可视</label>
+                                <select class="form-control" name="display">
+                                    <option value="1" @if(isset($article) && $article->display) selected @endif>可视</option>
+                                    <option value="0" @if(isset($article) && !$article->display) selected @endif>不可视</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>

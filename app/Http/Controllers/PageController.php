@@ -10,10 +10,10 @@ class PageController extends CommonController {
 
 	public function article($id)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::where('display', '=', true)->firstOrFail($id);
 
         if ($article->category_id == 0) {
-            
+
             return redirect("page/{$article->category_id}");
         }
 
@@ -29,7 +29,7 @@ class PageController extends CommonController {
         return view('page.category')
             ->withCategory($category)
             ->withArticles(
-                $category->articles()->orderBy('sort', 'desc')
+                $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
                 ->orderBy('created_at', 'desc')
                 ->orderBy('id', 'desc')
                 ->paginate(10)
@@ -40,14 +40,15 @@ class PageController extends CommonController {
     {
         $tag = Tag::with('articles')->where('id', '=', $id)->firstOrFail();
 
-        return view('page.tag')->withTag($tag)->withArticles($tag->articles()->paginate(10));
+        return view('page.tag')->withTag($tag)
+            ->withArticles($tag->articles()->where('display', '=', true)->paginate(10));
     }
 
     public function target($first, $second = null)
     {
         if (is_null($second)) {
 
-            if ($article = Article::where('name', '=', $first)->first()) {
+            if ($article = Article::where('name', '=', $first)->where('display', '=', true)->first()) {
 
                 if ($article->category_id == 0) {
 
@@ -61,7 +62,7 @@ class PageController extends CommonController {
                 return view('page.category')
                     ->withCategory($category)
                     ->withArticles(
-                        $category->articles()->orderBy('sort', 'desc')
+                        $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
                         ->orderBy('created_at', 'desc')
                         ->orderBy('id', 'desc')
                         ->paginate(10)
@@ -72,7 +73,7 @@ class PageController extends CommonController {
                 return view('page.tag')
                     ->withTag($tag)
                     ->withArticles(
-                        $tag->articles()->orderBy('sort', 'desc')
+                        $tag->articles()->where('display', '=', true)->orderBy('sort', 'desc')
                         ->orderBy('created_at', 'desc')
                         ->orderBy('id', 'desc')
                         ->paginate(10)
@@ -84,7 +85,7 @@ class PageController extends CommonController {
             switch ($first) {
                 case 'article':
 
-                    $article = Article::where('name', '=', $second)->firstOrFail();
+                    $article = Article::where('name', '=', $second)->where('display', '=', true)->firstOrFail();
 
                     return view('page.article')->withArticle($article);
 
@@ -99,7 +100,7 @@ class PageController extends CommonController {
                     return view('page.category')
                         ->withCategory($category)
                         ->withArticles(
-                            $category->articles()->orderBy('sort', 'desc')
+                            $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
                             ->orderBy('created_at', 'desc')
                             ->orderBy('id', 'desc')
                             ->paginate(10)
@@ -115,7 +116,7 @@ class PageController extends CommonController {
                     return view('page.tag')
                         ->withTag($tag)
                         ->withArticles(
-                            $tag->articles()->orderBy('sort', 'desc')
+                            $tag->articles()->where('display', '=', true)->orderBy('sort', 'desc')
                             ->orderBy('created_at', 'desc')
                             ->orderBy('id', 'desc')
                             ->paginate(10)
