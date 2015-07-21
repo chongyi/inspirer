@@ -51,6 +51,8 @@ class PageController extends CommonController
 
             if ($article = Article::where('name', '=', $first)->where('display', '=', true)->first()) {
 
+                Article::where('name', '=', $first)->where('display', '=', true)->increment('views');
+
                 if ($article->category_id == 0) {
 
                     return view('page.page')->withArticle($article);
@@ -87,6 +89,8 @@ class PageController extends CommonController
                 case 'article':
 
                     $article = Article::where('name', '=', $second)->where('display', '=', true)->firstOrFail();
+
+                    Article::where('name', '=', $second)->where('display', '=', true)->increment('views');
 
                     return view('page.article')->withArticle($article);
 
