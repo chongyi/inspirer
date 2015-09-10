@@ -54,7 +54,10 @@ class PageController extends CommonController
         }
 
         return view('page.tag')->with('tag', $tag)
-                               ->with('articles', $tag->articles()->where('display', '=', true)->paginate(10));
+                               ->with('articles', $tag->articles()
+                                                      ->where('display', '=', true)
+                                                      ->orderBy('created_at', 'desc')
+                                                      ->paginate(10));
     }
 
     public function page($name)
