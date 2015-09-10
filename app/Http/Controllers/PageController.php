@@ -63,15 +63,18 @@ class PageController extends CommonController
     public function page($name)
     {
         if (is_numeric($name)) {
-            $page = Article::where('display', '=', true)->where('category_id', '=', 0)->firstOrFail($name);
+            $page = Article::where('display', '=', true)->firstOrFail($name);
         } else {
             $page = Article::where('display', '=', true)
-                           ->where('category_id', '=', 0)
                            ->where('name', '=', $name)
                            ->firstOrFail();
         }
 
         $page->increment('views');
+
+        if ($page->category_id != 0) {
+            return view('page.article')->with('article', $page);
+        }
 
         return view('page.page')->with('article', $page);
     }
