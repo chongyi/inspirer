@@ -144,7 +144,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\ValidatorExtendServiceProvider',
+        'App\Providers\InspirerProvider',
 
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 	],
 
 	/*

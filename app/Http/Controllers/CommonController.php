@@ -2,11 +2,13 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Inspirer\Models\Article;
 use App\Inspirer\Models\Category;
 use App\Inspirer\Models\Tag;
 use Illuminate\Http\Request;
 use App\Inspirer\Models\Nav;
 use App\Inspirer\Models\Option;
+use DB;
 
 class CommonController extends Controller
 {
@@ -40,9 +42,20 @@ class CommonController extends Controller
             $options[$option->key] = $option->value;
         }
 
+        $collection = DB::table('articles')
+                        ->select(DB::raw("DATE_FORMAT(`created_at`, '%Y %m') as `archive`, count(*) as `count`"))
+                        ->where('category_id', '!=', 0)
+                        ->where('display', '=', true)
+                        ->orderBy('created_at', 'desc')
+                        ->groupBy('archive')
+                        ->get();
+
+
+
         view()->share('navs', $function($function, $navs));
         view()->share('categories', Category::all());
         view()->share('tags', Tag::all());
+        view()->share('archive', $collection);
         view()->share('options', $options);
     }
 

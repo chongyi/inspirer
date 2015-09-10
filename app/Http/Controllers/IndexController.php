@@ -14,7 +14,6 @@ class IndexController extends CommonController
     {
         $articles = Article::where('category_id', '!=', 0)
             ->where('display', '=', true)
-            ->orderBy('sort', 'desc')
             ->orderBy('created_at', 'desc')
             ->orderBy('id', 'desc')
             ->paginate(10);

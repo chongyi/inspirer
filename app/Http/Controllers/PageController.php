@@ -9,126 +9,78 @@ use Illuminate\Http\Request;
 class PageController extends CommonController
 {
 
-    public function article($id)
+    public function article($name)
     {
-        $article = Article::where('display', '=', true)->firstOrFail($id);
-
-        if ($article->category_id == 0) {
-
-            return redirect("page/{$article->category_id}");
+        if (is_numeric($name)) {
+            $article = Article::where('display', '=', true)->firstOrFail($name);
+        } else {
+            $article = Article::where('display', '=', true)->where('name', '=', $name)->firstOrFail();
         }
 
         $article->increment('views');
 
+        if ($article->category_id == 0) {
+            return view('page.page')->withArticle($article);
+        }
+
         return view('page.article')->withArticle($article);
     }
 
-    public function category($id)
+    public function category($name)
     {
-        $category = Category::with('articles')->where('id', '=', $id)->firstOrFail();
+        if (is_numeric($name)) {
+            $category = Category::with('articles')->where('id', '=', $name)->firstOrFail();
+        } else {
+            $category = Category::with('articles')->where('name', '=', $name)->firstOrFail();
+        }
 
         return view('page.category')
-            ->withCategory($category)
-            ->withArticles(
+            ->with('category', $category)
+            ->with(
+                'articles',
                 $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                    ->orderBy('created_at', 'desc')
-                    ->orderBy('id', 'desc')
-                    ->paginate(10)
+                         ->orderBy('created_at', 'desc')
+                         ->orderBy('id', 'desc')
+                         ->paginate(10)
             );
     }
 
-    public function tag($id)
+    public function tag($name)
     {
-        $tag = Tag::with('articles')->where('id', '=', $id)->firstOrFail();
-
-        return view('page.tag')->withTag($tag)
-            ->withArticles($tag->articles()->where('display', '=', true)->paginate(10));
-    }
-
-    public function target($first, $second = null)
-    {
-        if (is_null($second)) {
-
-            if ($article = Article::where('name', '=', $first)->where('display', '=', true)->first()) {
-
-                Article::where('name', '=', $first)->where('display', '=', true)->increment('views');
-
-                if ($article->category_id == 0) {
-
-                    return view('page.page')->withArticle($article);
-                }
-
-                return view('page.article')->withArticle($article);
-
-            } elseif ($category = Category::with('articles')->where('name', '=', $first)->first()) {
-
-                return view('page.category')
-                    ->withCategory($category)
-                    ->withArticles(
-                        $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                            ->orderBy('created_at', 'desc')
-                            ->orderBy('id', 'desc')
-                            ->paginate(10)
-                    );
-
-            } elseif ($tag = Tag::where('name', '=', $first)->first()) {
-
-                return view('page.tag')
-                    ->withTag($tag)
-                    ->withArticles(
-                        $tag->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                            ->orderBy('created_at', 'desc')
-                            ->orderBy('id', 'desc')
-                            ->paginate(10)
-                    );
-
-            }
+        if (is_numeric($name)) {
+            $tag = Tag::with('articles')->where('id', '=', $name)->firstOrFail();
         } else {
-
-            switch ($first) {
-                case 'article':
-
-                    $article = Article::where('name', '=', $second)->where('display', '=', true)->firstOrFail();
-
-                    Article::where('name', '=', $second)->where('display', '=', true)->increment('views');
-
-                    return view('page.article')->withArticle($article);
-
-                    break;
-
-                case 'category':
-                case 'cat':
-                case 'c':
-
-                    $category = Category::with('articles')->where('name', '=', $second)->firstOrFail();
-
-                    return view('page.category')
-                        ->withCategory($category)
-                        ->withArticles(
-                            $category->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                                ->orderBy('created_at', 'desc')
-                                ->orderBy('id', 'desc')
-                                ->paginate(10)
-                        );
-
-                    break;
-
-                case 'tag':
-                case 't':
-
-                    $tag = Tag::with('articles')->where('name', '=', $second)->firstOrFail();
-
-                    return view('page.tag')
-                        ->withTag($tag)
-                        ->withArticles(
-                            $tag->articles()->where('display', '=', true)->orderBy('sort', 'desc')
-                                ->orderBy('created_at', 'desc')
-                                ->orderBy('id', 'desc')
-                                ->paginate(10)
-                        );
-            }
+            $tag = Tag::with('articles')->where('name', '=', $name)->firstOrFail();
         }
 
-        abort(404);
+        return view('page.tag')->with('tag', $tag)
+                               ->with('articles', $tag->articles()->where('display', '=', true)->paginate(10));
+    }
+
+    public function page($name)
+    {
+        if (is_numeric($name)) {
+            $page = Article::where('display', '=', true)->where('category_id', '=', 0)->firstOrFail($name);
+        } else {
+            $page = Article::where('display', '=', true)
+                           ->where('category_id', '=', 0)
+                           ->where('name', '=', $name)
+                           ->firstOrFail();
+        }
+
+        $page->increment('views');
+
+        return view('page.page')->with('article', $page);
+    }
+
+    public function archive($year, $month)
+    {
+        $articles = Article::where(\DB::raw("DATE_FORMAT(`created_at`, '%Y %c')"), '=', "$year $month")
+                           ->where('category_id', '!=', 0)
+                           ->where('display', '=', true)
+                           ->orderBy('created_at', 'desc')
+                           ->paginate(5);
+
+        return view('page.archive')->with('articles', $articles);
     }
 }

@@ -6,7 +6,9 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"erusev/parsedown": "dev-master"
+		"erusev/parsedown": "dev-master",
+		"barryvdh/laravel-ide-helper": "^2.1",
+        "hightman/xunsearch": "*@beta"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

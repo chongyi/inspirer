@@ -10,16 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-// Route::get('/', 'WelcomeController@index');
-
-// Route::get('home', 'HomeController@index');
-
-// Route::controllers([
-// 	'auth' => 'Auth\AuthController',
-// 	'password' => 'Auth\PasswordController',
-// ]);
-
 Route::pattern('id', '[0-9]+');
 
 Route::get('/', 'IndexController@index');
@@ -38,10 +28,12 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('static', 'ArticleStaticController', ['only' => ['create', 'store']]);
 });
 
-Route::get('article/{id}', 'PageController@article');
-Route::get('category/{id}', 'PageController@category');
-Route::get('tag/{id}', 'PageController@tag');
-Route::get('{first}/{second?}', 'PageController@target')->where(['first'  => '[-_A-Za-z0-9]+',
-                                                                 'second' => '[-_A-Za-z0-9]+'
-]);
+Route::get('article/{name}', ['as' => 'show-article', 'uses' => 'PageController@article']);
+Route::get('category/{name}', ['as' => 'show-category-article-list', 'uses' => 'PageController@category']);
+Route::get('tag/{name}', ['as' => 'show-tag-article-list', 'uses' => 'PageController@tag']);
+Route::get('archive/{year}/{month}', ['as' => 'show-archive-article-list', 'uses' => 'PageController@archive']);
+Route::get('{name}', ['as' => 'show-page', 'uses' => 'PageController@page']);
+
+Route::get('search/{searchKeyword}', ['as' => 'site-search', 'uses' => 'SearchController@search']);
+
 Route::get('about', 'PageController@about');
