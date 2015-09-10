@@ -48,6 +48,7 @@
         <p>Powered by XOPNS·Database - WebsiteDeveloper</p>
         @if(isset($staticMode))<p>This is a static page. Created at {{ $staticCreateTime }}</p>@endif
         <p id="record-number"><a href="http://www.miitbeian.gov.cn/">渝ICP备15005301号</a></p>
+        <p><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254751551'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1254751551' type='text/javascript'%3E%3C/script%3E"));</script></p>
     </div>
 </footer>
 
