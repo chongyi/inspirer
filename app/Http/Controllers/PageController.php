@@ -12,7 +12,7 @@ class PageController extends CommonController
     public function article($name)
     {
         if (is_numeric($name)) {
-            $article = Article::where('display', '=', true)->firstOrFail($name);
+            $article = Article::where('display', '=', true)->where('id', '=', $name)->firstOrFail();
         } else {
             $article = Article::where('display', '=', true)->where('name', '=', $name)->firstOrFail();
         }
