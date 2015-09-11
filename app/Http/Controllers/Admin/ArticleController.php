@@ -26,9 +26,9 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::with('category')
-            ->orderBy('sort', 'desc')
-            ->orderBy('created_at', 'desc')
-            ->paginate(8);
+                           ->orderBy('sort', 'desc')
+                           ->orderBy('created_at', 'desc')
+                           ->paginate(8);
 
         return view('admin.article.index', ['articles' => $articles]);
     }
@@ -78,10 +78,24 @@ class ArticleController extends Controller
         $article->modified_at = date("Y-m-d H:i:s", time());
         $article->save();
 
+        $xs = new \XS('inspirer');
+
+        // 保存至全文搜索索引
+        $doc = new \XSDocument();
+        $doc->setFields([
+            'id'          => $article->id,
+            'title'       => $article->title,
+            'name'        => $article->name,
+            'description' => $article->description,
+            'keyword'     => $article->keywords,
+            'content'     => $article->content
+        ]);
+
+        $xs->index->add($doc);
+
         $article->tags()->sync($request->input('tag', []));
 
         return redirect('admin/article');
-
     }
 
     /**
@@ -163,8 +177,24 @@ class ArticleController extends Controller
         if (isset($name)) {
             $article->name = $name;
         }
+
         $article->modified_at = date("Y-m-d H:i:s", time());
         $article->save();
+
+        $xs = new \XS('inspirer');
+
+        // 保存至全文搜索索引
+        $doc = new \XSDocument();
+        $doc->setFields([
+            'id'          => $article->id,
+            'title'       => $article->title,
+            'name'        => $article->name,
+            'description' => $article->description,
+            'keyword'     => $article->keywords,
+            'content'     => $article->content
+        ]);
+
+        $xs->index->update($doc);
 
         $article->tags()->sync($request->input('tag', []));
 
@@ -181,6 +211,9 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         Article::findOrFail($id)->delete();
+
+        $xs = new \XS('inspirer');
+        $xs->index->del($id);
 
         return redirect('admin/article');
     }

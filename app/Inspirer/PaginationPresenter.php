@@ -64,7 +64,7 @@ class PaginationPresenter implements Presenter
         if ($this->hasPages())
         {
             return sprintf(
-                '<ul class="am-pagination insp-d-article-list-pagination">%s %s %s</ul>',
+                '<ul class="am-pagination pagination insp-d-article-list-pagination">%s %s %s</ul>',
                 $this->getPreviousButton(),
                 $this->getLinks(),
                 $this->getNextButton()
@@ -97,7 +97,7 @@ class PaginationPresenter implements Presenter
      */
     protected function getDisabledTextWrapper($text)
     {
-        return '<li class="am-disabled"><span>'.$text.'</span></li>';
+        return '<li class="am-disabled disabled"><span>'.$text.'</span></li>';
     }
 
     /**
@@ -108,7 +108,7 @@ class PaginationPresenter implements Presenter
      */
     protected function getActivePageWrapper($text)
     {
-        return '<li class="am-active"><span>'.$text.'</span></li>';
+        return '<li class="am-active active"><span>'.$text.'</span></li>';
     }
 
     /**
