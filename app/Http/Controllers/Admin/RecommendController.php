@@ -30,7 +30,7 @@ class RecommendController extends Controller
             ->with('articleList', \DB::table('articles')
                                      ->select('id', 'title')
                                      ->where('category_id', '!=', 0)
-                                     ->orderBy('created_at', 'DESC')
+                                     ->orderBy('sort', 'DESC')
                                      ->get());
     }
 

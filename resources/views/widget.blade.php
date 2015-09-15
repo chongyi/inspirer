@@ -49,9 +49,9 @@
         </div>
         <div class="insp-d-body">
             <ul class="insp-d-column-list insp-d-column-list-inline">
-                <li><a href="http://laravelacademy.org/" title="laravel 学院">laravel 学院</a></li>
-                <li><a href="http://www.biner.me/" title="宾呐·之谜">宾呐·之谜</a></li>
-                <li><a href="http://www.nowamagic.net/" title="现代简明魔法">现代简明魔法</a></li>
+                <li><a target="_blank" href="http://laravelacademy.org/" title="laravel 学院">laravel 学院</a></li>
+                <li><a target="_blank" href="http://www.biner.me/" title="宾呐·之谜">宾呐·之谜</a></li>
+                <li><a target="_blank" href="http://www.nowamagic.net/" title="现代简明魔法">现代简明魔法</a></li>
             </ul>
         </div>
     </div>
