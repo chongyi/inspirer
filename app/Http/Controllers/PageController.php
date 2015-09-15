@@ -81,11 +81,11 @@ class PageController extends CommonController
 
     public function archive($year, $month)
     {
+        // 档案不分页
         $articles = Article::where(\DB::raw("DATE_FORMAT(`created_at`, '%Y %c')"), '=', "$year $month")
                            ->where('category_id', '!=', 0)
                            ->where('display', '=', true)
-                           ->orderBy('created_at', 'desc')
-                           ->paginate(5);
+                           ->orderBy('created_at', 'desc')->get();
 
         return view('page.archive')->with('articles', $articles);
     }

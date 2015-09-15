@@ -10,3 +10,5 @@ DefaultSeeder.php
 .idea
 *.mp3
 /public/html
+/public/assets/*
+!/public/assets/theme

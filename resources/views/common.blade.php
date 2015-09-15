@@ -41,6 +41,7 @@
     <!-- 主容器 -->
     @yield('body')
 </div>
+<a id="scroll-top" class="am-icon-btn am-icon-arrow-up am-primary am-animation-shake" href="#top" style="position: fixed; right: 15px; bottom: 25px;"></a>
 <footer class="am-kai insp-d-footer">
     <div class="am-g am-g-fixed">
         <p>灵感，来自生活的馈赠</p>
@@ -84,6 +85,25 @@
 
             var host = $('#search-form').attr('action');
             window.location.href = host + '/' + keyword;
+        });
+
+        $(window).scroll(function(event) {
+            if ($(this).scrollTop() > 70) {
+                $('#scroll-top').fadeIn(100);
+            } else {
+                $('#scroll-top').fadeOut(100);
+            }
+
+            if ($(this).scrollTop() + $(window).height() >= $('body').height() - 150) {
+                $('#scroll-top').css('bottom', 160);
+            } else if ($('#scroll-top').css('bottom') != 25) {
+                $('#scroll-top').css('bottom', 25);
+            }
+        });
+
+        $('#scroll-top').click(function(event) {
+            $('body').animate({scrollTop: 0}, 500);
+            return false;
         });
     });
 </script>

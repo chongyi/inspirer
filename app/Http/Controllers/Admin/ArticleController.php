@@ -60,14 +60,15 @@ class ArticleController extends Controller
             'sort'        => ['numeric'],
             'name'        => ['alpha_dash'],
             'tag'         => ['array'],
-            'display'     => ['boolean']
+            'display'     => ['boolean'],
+            'recommend'   => ['array']
         ]);
 
         if ($check->fails()) {
             return redirect()->back()->withErrors($check->errors())->withInput();;
         }
 
-        extract(ArticleProcess::convertArticle($request->input('content')));
+        list($description, $content) = ArticleProcess::convertArticle($request->input('content'));
 
         $insert                = $request->only('title', 'category_id', 'keywords', 'sort', 'name', 'display');
         $insert['content']     = $content;

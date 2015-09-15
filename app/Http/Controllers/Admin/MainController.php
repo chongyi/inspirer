@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Inspirer\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -11,7 +12,12 @@ class MainController extends BaseController
 
     public function index()
     {
-        return view('admin.main')->withActive('dashboard');
+        $total = [
+            'article' => Article::where('category_id', '!=', 0)->count(),
+            'page' => Article::where('category_id', '=', 0)->count(),
+        ];
+
+        return view('admin.main')->withActive('dashboard')->with('total', $total);
     }
 
     public function login()

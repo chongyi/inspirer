@@ -109,6 +109,46 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>选择关联文章</label>
+                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#select-relate-window">选择关联文章</button>
+                                <div class="modal fade" id="select-relate-window" role="dialog" aria-labelledby="select-relate-window-l">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p>请选择</p>
+                                                        <div id="relate-articles-container">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p>已选择</p>
+                                                        <div>
+                                                            <ul class="list-group" id="relate-select-articles">
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>
@@ -135,6 +175,30 @@
             imageUploadURL : "/admin/upload",
         });
     });
-    
+</script>
+<script type="text/javascript" src="/assets/mustache/mustache.js"></script>
+<script type="text/x-template" id="relate-article-item">
+<ul class="list-group">
+    @{{#list}}
+    <li class="list-group-item" data-article-id="@{{ id }}">@{{title}}</li>
+    @{{/list}}
+</ul>
+</script>
+<script>
+    $(document).ready(function () {
+        $.getJSON('{{ route('admin.dataset.articles') }}', function(result) {
+            $('#relate-articles-container').html(Mustache.render($('#relate-article-item').text(), result));
+        });
+
+        $(document).on('click', '#relate-articles-container li', function () {
+            $('#relate-select-articles').append(this);
+        });
+
+        $(document).on('click', '#relate-select-articles li', function () {
+            $('#relate-articles-container ul').append(this);
+        });
+
+
+    });
 </script>
 @stop

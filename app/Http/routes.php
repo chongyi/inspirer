@@ -23,9 +23,15 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin
     Route::resource('article', 'ArticleController');
     Route::resource('category', 'CategoryController');
     Route::resource('nav', 'NavController');
-    Route::resource('upload', 'UploadController');
+    Route::resource('upload', 'UploadController', ['only' => 'store']);
     Route::resource('tag', 'TagController');
     Route::resource('static', 'ArticleStaticController', ['only' => ['create', 'store']]);
+    Route::controller('recommend', 'RecommendController',
+        ['postArticle'   => 'admin.recommend.put-article',
+         'getIndex'      => 'admin.recommend.index',
+         'deleteArticle' => 'admin.recommend.delete-article'
+        ]);
+    Route::controller('dataset', 'DatasetHolderController', ['getArticles' => 'admin.dataset.articles']);
 });
 
 Route::get('article/{name}', ['as' => 'show-article', 'uses' => 'PageController@article']);

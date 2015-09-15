@@ -21,7 +21,6 @@ class UploadController extends Controller
 
             $file->move('./data/uploads/', $fileName);
 
-
             exit(json_encode(['success' => 1, 'url' => '/data/uploads/' . $fileName]));
         }
 

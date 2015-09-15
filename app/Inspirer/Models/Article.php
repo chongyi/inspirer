@@ -27,4 +27,9 @@ class Article extends Model
         return $this->where('category_id', '<>', 0)->where('id', '<', $this->id)->orderBy('id', 'desc')->first();
     }
 
+    public function relate()
+    {
+        return $this->hasMany('App\Inspirer\Models\Article', 'relate_id');
+    }
+
 }
