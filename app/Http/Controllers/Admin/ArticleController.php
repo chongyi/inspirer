@@ -65,10 +65,10 @@ class ArticleController extends Controller
         ]);
 
         if ($check->fails()) {
-            return redirect()->back()->withErrors($check->errors())->withInput();;
+            return redirect()->back()->withErrors($check->errors())->withInput();
         }
 
-        list($description, $content) = ArticleProcess::convertArticle($request->input('content'));
+        list($description, $content) = array_values(ArticleProcess::convertArticle($request->input('content')));
 
         $insert                = $request->only('title', 'category_id', 'keywords', 'sort', 'name', 'display');
         $insert['content']     = $content;
