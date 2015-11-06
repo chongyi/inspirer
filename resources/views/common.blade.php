@@ -107,5 +107,13 @@
         });
     });
 </script>
+<script src="//cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+	jax: ["input/TeX","output/SVG"],
+        tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]],
+                  displayMath: [['$$','$$'], ["\[","\]"]]}
+    });
+</script>
 </body>
 </html>
