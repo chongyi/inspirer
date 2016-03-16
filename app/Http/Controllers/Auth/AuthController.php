@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Inspirer\Http\Controllers\Auth;
 
-use App\User;
+use Inspirer\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Inspirer\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

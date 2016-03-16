@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Inspirer\Events;
 
 abstract class Event
 {
