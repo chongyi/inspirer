@@ -1,10 +1,10 @@
 <?php
 
-namespace Inspirer;
+namespace Inspirer\Components\Account\User;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
-class User extends Authenticatable
+class User extends AuthUser
 {
     /**
      * The attributes that are mass assignable.

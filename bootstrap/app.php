@@ -11,7 +11,7 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
+$app = new \Inspirer\Components\Kernel\Application(
     realpath(__DIR__.'/../')
 );
 
