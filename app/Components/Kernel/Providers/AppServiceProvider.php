@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspirer\Providers;
+namespace Inspirer\Components\Kernel\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

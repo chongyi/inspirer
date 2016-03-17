@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspirer\Providers;
+namespace Inspirer\Components\Kernel\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;

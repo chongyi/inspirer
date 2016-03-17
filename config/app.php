@@ -130,7 +130,7 @@ return [
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
-        Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+        Inspirer\Components\Kernel\Providers\ConsoleSupportServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        Inspirer\Providers\AppServiceProvider::class,
-        Inspirer\Providers\AuthServiceProvider::class,
-        Inspirer\Providers\EventServiceProvider::class,
-        Inspirer\Providers\RouteServiceProvider::class,
+        Inspirer\Components\Kernel\Providers\AppServiceProvider::class,
+        Inspirer\Components\Kernel\Providers\AuthServiceProvider::class,
+        Inspirer\Components\Kernel\Providers\EventServiceProvider::class,
+        Inspirer\Components\Kernel\Providers\RouteServiceProvider::class,
 
     ],
 

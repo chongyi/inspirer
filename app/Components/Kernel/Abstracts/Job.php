@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspirer\Jobs;
+namespace Inspirer\Components\Kernel\Abstracts;
 
 use Illuminate\Bus\Queueable;
 
