@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspirer\Components\Kernel\Providers;
+namespace Inspirer\Framework\Kernel\Providers;
 
 use Inspirer\Console\Commands\ControllerMakeCommand;
 use Inspirer\Console\Commands\EventMakeCommand;

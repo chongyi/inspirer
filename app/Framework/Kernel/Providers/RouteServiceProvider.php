@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspirer\Components\Kernel\Providers;
+namespace Inspirer\Framework\Kernel\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -24,8 +24,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
-
         parent::boot($router);
     }
 
@@ -38,7 +36,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map(Router $router)
     {
         $router->group(['namespace' => $this->namespace], function ($router) {
-            require app_path('Http/routes.php');
+            require app_path('Http/Routes/common.php');
         });
     }
 }

@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use DummyRootNamespaceComponents\Kernel\Abstracts\Event;
+use DummyRootNamespaceFramework\Kernel\Abstracts\Event;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 

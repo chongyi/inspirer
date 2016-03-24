@@ -11,7 +11,7 @@
 |
 */
 
-$app = new \Inspirer\Components\Kernel\Application(
+$app = new \Inspirer\Framework\Kernel\Application(
     realpath(__DIR__.'/../')
 );
 

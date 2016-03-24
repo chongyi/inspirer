@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use DummyRootNamespaceComponents\Kernel\Abstracts\Job;
+use DummyRootNamespaceFramework\Kernel\Abstracts\Job;
 
 class DummyClass extends Job
 {

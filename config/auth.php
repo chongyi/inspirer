@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model'  => Inspirer\Components\Account\User\User::class,
+            'model'  => Inspirer\Framework\Account\User\User::class,
         ],
 
         // 'users' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Inspirer\Components\Account\User;
+namespace Inspirer\Framework\Account\User;
 
 use Illuminate\Foundation\Auth\User as AuthUser;
 
