@@ -6,6 +6,6 @@ class ProviderMakeCommand extends \Illuminate\Foundation\Console\ProviderMakeCom
 {
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Components\Kernel\Providers';
+        return $rootNamespace . '\Framework\Kernel\Providers';
     }
 }

@@ -6,7 +6,7 @@ class ListenerMakeCommand extends \Illuminate\Foundation\Console\ListenerMakeCom
 {
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Components\Kernel\Listeners';
+        return $rootNamespace . '\Framework\Kernel\Listeners';
     }
 
 }

@@ -6,15 +6,15 @@ class JobMakeCommand extends \Illuminate\Foundation\Console\JobMakeCommand
 {
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Components\Kernel\Jobs';
+        return $rootNamespace . '\Framework\Kernel\Jobs';
     }
 
     protected function getStub()
     {
         if ($this->option('sync')) {
-            return app_path('Components/Kernel/Stubs/job.stub');
+            return app_path('Framework/Kernel/Stubs/job.stub');
         } else {
-            return app_path('Components/Kernel/Stubs/job-queued.stub');
+            return app_path('Framework/Kernel/Stubs/job-queued.stub');
         }
     }
 }
