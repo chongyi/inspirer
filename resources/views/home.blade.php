@@ -2,6 +2,7 @@
 @section('meta')
 <meta name="keywords" content="灵感,inspirer,php,开发,学习,博客,blog,xopns">
 <meta name="description" content="生活，感之粼粼，问之潢潢。">
+<meta property="qc:admins" content="3072207367616306470" />
 @stop
 @section('body')
     @if(!is_null($recommends))
