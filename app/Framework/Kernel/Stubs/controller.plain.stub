@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Http\Request;
+
+use DummyRootNamespaceHttp\Requests;
+use DummyExtendClassFullName;
+
+class DummyClass extends DummyExtendClassName
+{
+    //
+}

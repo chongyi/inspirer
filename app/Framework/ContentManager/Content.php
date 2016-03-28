@@ -4,6 +4,11 @@ namespace Inspirer\Framework\ContentManager;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Content
+ *
+ * @package Inspirer\Framework\ContentManager
+ */
 class Content extends Model
 {
     /**
@@ -114,16 +119,25 @@ class Content extends Model
         return $this;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
     public function model()
     {
         return $this->morphTo();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
     public function account()
     {
         return $this->morphTo();

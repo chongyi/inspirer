@@ -4,18 +4,32 @@ namespace Inspirer\Framework\ContentManager;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Category
+ *
+ * @package Inspirer\Framework\ContentManager
+ */
 class Category extends Model
 {
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function contents()
     {
         return $this->hasMany(Content::class, 'category_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id', 'id');
@@ -93,6 +107,11 @@ class Category extends Model
         return $this;
     }
 
+    /**
+     * @param $category
+     *
+     * @return $this
+     */
     public function setParent($category)
     {
         $this->parent()->associate($category);
