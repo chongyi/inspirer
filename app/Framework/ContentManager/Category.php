@@ -119,5 +119,11 @@ class Category extends Model
         return $this;
     }
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function model()
+    {
+        return $this->morphTo();
+    }
 }

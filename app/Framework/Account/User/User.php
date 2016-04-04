@@ -3,12 +3,13 @@
 namespace Inspirer\Framework\Account\User;
 
 use Illuminate\Foundation\Auth\User as AuthUser;
+use Inspirer\Framework\Attachments\UserAttachmentTrait;
 use Inspirer\Framework\ContentManager\AccountTrait;
 use Hash;
 
 class User extends AuthUser
 {
-    use AccountTrait;
+    use AccountTrait, UserAttachmentTrait;
 
     /**
      * The attributes that are mass assignable.

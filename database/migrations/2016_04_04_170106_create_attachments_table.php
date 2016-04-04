@@ -26,8 +26,14 @@ class CreateAttachmentsTable extends Migration
             $table->string('origin_filename')->nullable()->index()->comment('原始文件名');
             $table->char('md5', 32)->index()->comment('文件的 MD5 值');
             $table->string('sha512', 128)->index()->comment('文件的 SHA-512 值');
-
+            
+            $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::create('attachment_user', function (Blueprint $blueprint) {
+            $blueprint->integer('attachment_id')->unsigned()->comment('附件 ID');
+            $blueprint->integer('user_id')->unsgined()->comment('用户 ID');
         });
     }
 
@@ -39,5 +45,6 @@ class CreateAttachmentsTable extends Migration
     public function down()
     {
         Schema::drop('attachments');
+        Schema::drop('attachment_user');
     }
 }
