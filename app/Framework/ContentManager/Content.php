@@ -3,6 +3,8 @@
 namespace Inspirer\Framework\ContentManager;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Closure;
 
 /**
  * Class Content
@@ -11,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Content extends Model
 {
+    use SoftDeletes;
+    
     /**
      * @param mixed $category
      *
@@ -85,11 +89,22 @@ class Content extends Model
 
     /**
      * @param mixed $model
+     * @param Closure|null $callback
      *
      * @return Content
      */
-    public function setModel($model)
+    public function setModel($model, Closure $callback = null)
     {
+        if (!is_null($callback)) {
+            $manager = ModelManager::getInstance();
+
+            if (is_string($model) && $manager->hasModel($model)) {
+                $model = $manager->getModel($model);
+                call_user_func($callback, $model, $this);
+                $model->save();
+            }
+        }
+
         $this->model()->associate($model);
 
         return $this;

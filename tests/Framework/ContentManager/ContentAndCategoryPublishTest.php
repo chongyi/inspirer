@@ -7,7 +7,7 @@ use Inspirer\Framework\ContentManager\Content;
 use Inspirer\Framework\ContentManager\Models\Article;
 use Inspirer\Framework\Account\User\User;
 
-class ContentTest extends TestCase
+class ContentAndCategoryPublishTest extends TestCase
 {
     use DatabaseMigrations;
     use DatabaseTransactions;

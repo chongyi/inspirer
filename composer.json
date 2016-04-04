@@ -7,7 +7,6 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "five-say/laravel-schema-extend": "~3.0",
         "barryvdh/laravel-ide-helper": "~2.1"
     },
     "require-dev": {

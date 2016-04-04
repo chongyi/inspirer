@@ -2,10 +2,9 @@
 
 namespace Inspirer\Framework\ContentManager\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Inspirer\Framework\ContentManager\Content;
+use Inspirer\Framework\ContentManager\ContentModel;
 
-class Article extends Model
+class Article extends ContentModel
 {
     /**
      * @param mixed $content
@@ -53,15 +52,5 @@ class Article extends Model
         $this->sourceName = $sourceName;
 
         return $this;
-    }
-
-    public function meta()
-    {
-        return $this->morphOne(Content::class, 'model');
-    }
-
-    public function category()
-    {
-        return $this->meta->category();
     }
 }
