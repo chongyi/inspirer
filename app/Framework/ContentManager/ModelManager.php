@@ -14,6 +14,11 @@ namespace Inspirer\Framework\ContentManager;
  *
  * @package Inspirer\Framework\ContentManager
  */
+/**
+ * Class ModelManager
+ *
+ * @package Inspirer\Framework\ContentManager
+ */
 class ModelManager
 {
     /**
