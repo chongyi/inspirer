@@ -34,6 +34,7 @@ class CreateAttachmentsTable extends Migration
         Schema::create('attachment_user', function (Blueprint $blueprint) {
             $blueprint->integer('attachment_id')->unsigned()->comment('附件 ID');
             $blueprint->integer('user_id')->unsgined()->comment('用户 ID');
+            $blueprint->primary(['attachment_id', 'user_id']);
         });
     }
 

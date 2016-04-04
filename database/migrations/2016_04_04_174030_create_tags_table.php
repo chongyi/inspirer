@@ -23,6 +23,7 @@ class CreateTagsTable extends Migration
         Schema::create('content_tag', function (Blueprint $blueprint) {
             $blueprint->integer('content_id')->unsigned()->comment('内容 ID');
             $blueprint->integer('tag_id')->unsigned()->comment('标签 ID');
+            $blueprint->primary(['content_id', 'tag_id']);
         });
     }
 

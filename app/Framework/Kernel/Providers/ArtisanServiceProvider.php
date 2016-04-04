@@ -7,6 +7,7 @@ use Inspirer\Console\Commands\EventMakeCommand;
 use Inspirer\Console\Commands\JobMakeCommand;
 use Inspirer\Console\Commands\ListenerMakeCommand;
 use Inspirer\Console\Commands\ModelMakeCommand;
+use Inspirer\Console\Commands\PolicyMakeCommand;
 use Inspirer\Console\Commands\ProviderMakeCommand;
 
 class ArtisanServiceProvider extends \Illuminate\Foundation\Providers\ArtisanServiceProvider
@@ -50,6 +51,13 @@ class ArtisanServiceProvider extends \Illuminate\Foundation\Providers\ArtisanSer
     {
         $this->app->singleton('command.event.make', function ($app) {
             return new EventMakeCommand($app['files']);
+        });
+    }
+
+    protected function registerPolicyMakeCommand()
+    {
+        $this->app->singleton('command.policy.make', function ($app) {
+            return new PolicyMakeCommand($app['files']);
         });
     }
 

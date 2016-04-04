@@ -4,6 +4,8 @@ namespace Inspirer\Framework\Kernel\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Inspirer\Framework\ContentManager\Content;
+use Inspirer\Framework\Kernel\Authentication\Policies\ContentManager\ContentPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Inspirer\Model' => 'Inspirer\Policies\ModelPolicy',
+        Content::class => ContentPolicy::class,
     ];
 
     /**

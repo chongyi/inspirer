@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 abstract class ContentModel extends Model
 {
+    protected $touches = ['meta'];
+
     use SoftDeletes;
     
     public function meta()

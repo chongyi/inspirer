@@ -4,6 +4,11 @@ namespace Inspirer\Framework\ContentManager\Models;
 
 use Inspirer\Framework\ContentManager\ContentModel;
 
+/**
+ * Class Article
+ *
+ * @package Inspirer\Framework\ContentManager\Models
+ */
 class Article extends ContentModel
 {
     /**
