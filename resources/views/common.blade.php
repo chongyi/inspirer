@@ -10,8 +10,8 @@
     <!-- No Baidu Siteapp-->
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="/assets/amazeui/dist/css/amazeui.min.css">
-    <link rel="stylesheet" href="/assets/theme/dark/theme.css">
-    <link rel="stylesheet" href="/assets/theme/dark/prettify-theme.css">
+    <link rel="stylesheet" href="/assets/theme/normal/theme.css">
+    <link rel="stylesheet" href="/assets/theme/normal/prettify-theme.css">
     @yield('meta')
 </head>
 <body>
