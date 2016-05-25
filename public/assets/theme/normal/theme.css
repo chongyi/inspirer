@@ -90,7 +90,6 @@ code {
 
 .am-pagination>.am-disabled>a, .am-pagination>.am-disabled>a:focus, .am-pagination>.am-disabled>a:hover, .am-pagination>.am-disabled>span, .am-pagination>.am-disabled>span:focus, .am-pagination>.am-disabled>span:hover {
     border-color: #888;
-    background-color: #3c3c3c;
 }
 
 .am-pagination>.am-disabled>a, .am-pagination>.am-disabled>a:focus, .am-pagination>.am-disabled>a:hover, .am-pagination>.am-disabled>span, .am-pagination>.am-disabled>span:focus, .am-pagination>.am-disabled>span:hover {
