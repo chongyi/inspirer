@@ -285,8 +285,8 @@ ul.insp-d-recommend-list > li > .insp-d-recommend-item-info {
 footer.insp-d-footer {
     text-align: center;
     font-size: 16px;
-    border-top: solid 1px #3c3c3c;
     padding: 20px 0;
+    margin-top: 50px;
 }
 
 footer.insp-d-footer p {
