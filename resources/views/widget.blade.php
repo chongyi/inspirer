@@ -54,6 +54,7 @@
                 <li><a target="_blank" href="http://www.biner.me/" title="宾呐·之谜">宾呐·之谜</a></li>
                 <li><a target="_blank" href="http://www.nowamagic.net/" title="现代简明魔法">现代简明魔法</a></li>
                 <li><a target="_blank" href="https://www.phphub.org" title="PHPHub 社区">PHPHub 社区</a></li>
+                <li><a target="_blank" href="https://www.tanteng.me" title="Tanteng.me">Tanteng.me</a></li>
             </ul>
         </div>
     </div>
