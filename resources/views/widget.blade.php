@@ -56,6 +56,7 @@
                 <li><a target="_blank" href="https://www.phphub.org" title="PHPHub 社区">PHPHub 社区</a></li>
                 <li><a target="_blank" href="https://www.tanteng.me" title="Tanteng.me">Tanteng.me</a></li>
                 <li><a target="_blank" href="http://www.gouguoyin.cn/" title="够过瘾">够过瘾</a></li>
+                <li><a target="_blank" href="https://aicode.cc/" title="aicode">aicode</a></li>
             </ul>
         </div>
     </div>
