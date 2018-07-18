@@ -63,7 +63,7 @@
 <![endif]-->
 <script src="/assets/amazeui/dist/js/amazeui.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery.emoji.js"></script>
-<script src="/assets/google-code-prettify/bin/prettify.min.js"></script>
+<script src="https://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
 <script>
     $(document).ready(function() {
         $('pre').text(function(i, v) {
