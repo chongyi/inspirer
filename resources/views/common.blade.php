@@ -64,8 +64,6 @@
 <script src="/assets/amazeui/dist/js/amazeui.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery.emoji.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-rust.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-php.min.js"></script>
 <script>
     $(document).ready(function() {
         $('table').addClass('am-table am-table-hover');
