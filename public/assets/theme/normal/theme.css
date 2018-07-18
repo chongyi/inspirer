@@ -225,6 +225,11 @@ ul.insp-d-recommend-list > li > .insp-d-recommend-item-info {
 .insp-d-article-footer-notice-list > .insp-d-article-notice {
     border: solid 1px #3c3c3c;
     padding: 8px 15px;
+    margin-bottom: 15px;
+}
+
+.insp-d-article-footer-notice-list > .insp-d-article-notice:last-child {
+    margin-bottom: 0;
 }
 
 .insp-d-article-notice > p:first-child {
