@@ -11,7 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="/assets/amazeui/dist/css/amazeui.min.css">
     <link rel="stylesheet" href="/assets/theme/normal/theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
     @yield('meta')
 </head>
 <body>
