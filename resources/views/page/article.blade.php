@@ -46,7 +46,7 @@
                             <p>在转载或修改本文后发布的文章中注明原文来源信息的前提下，允许进行转载该篇文章或经修改后发布且不用告知本文作者。</p>
                         </div>
                         <div class="insp-d-article-notice">
-                            <p><strong>有匹配、疑问或建议？</strong></p>
+                            <p><strong>有批评、疑问或建议？</strong></p>
                             <p>欢迎联系作者，Email: xpz3847878@163.com</p>
                         </div>
                     </div>
