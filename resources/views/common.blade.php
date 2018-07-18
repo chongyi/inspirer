@@ -11,7 +11,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="stylesheet" href="/assets/amazeui/dist/css/amazeui.min.css">
     <link rel="stylesheet" href="/assets/theme/normal/theme.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-coy.min.css">
     @yield('meta')
 </head>
 <body>
@@ -64,6 +64,8 @@
 <script src="/assets/amazeui/dist/js/amazeui.min.js"></script>
 <script type="text/javascript" src="/static/js/jquery.emoji.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-rust.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-php.min.js"></script>
 <script>
     $(document).ready(function() {
         $('table').addClass('am-table am-table-hover');
